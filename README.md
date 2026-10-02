@@ -1,6 +1,6 @@
-# anakata-ui
+# iconic-ui
 
-Shared Nuxt 4 layer for **anakata-panel** (RMS + CRM) and **anakata-engine**. It owns the design tokens, Nuxt UI theme, fonts, `Ank*` components, and the API / money / date composables.
+Shared Nuxt 4 layer for **iconic-panel** (RMS + CRM) and **iconic-engine**. It owns the design tokens, Nuxt UI theme, fonts, `Ank*` components, and the API / money / date composables.
 
 ## What the layer provides
 
@@ -16,19 +16,19 @@ Nothing app-specific belongs here. If only one app uses it, it lives in that app
 
 ## How apps consume it
 
-Locally the sibling folder (A13). On Netlify, when that folder is missing, the apps extend the public GitHub tag:
+Locally the sibling folder (A13). On Netlify, when that folder is missing, the apps extend the public GitHub `dev` branch. No release tag is on `iconic-project/iconic-ui` yet.
 
 ```ts
-const localUi = resolve(import.meta.dirname, '../anakata-ui')
+const localUi = resolve(import.meta.dirname, '../iconic-ui')
 
 extends: [
   existsSync(localUi)
-    ? '../anakata-ui'
-    : 'github:anakata-project/anakata-ui#v0.16.0'
+    ? '../iconic-ui'
+    : 'github:iconic-project/iconic-ui#dev'
 ]
 ```
 
-Pin the tag to the layer version the app was built against. Do not publish this package to npm.
+Pin a tag once one is pushed. Do not publish this package to npm.
 
 `@nuxt/ui` and `tailwindcss` versions in the apps **must match** this layer. Today that is `@nuxt/ui` `^4.11.1` and `tailwindcss` `^4.3.3`. If you bump one, bump the others in the same change.
 

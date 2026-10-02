@@ -160,13 +160,13 @@
 
 ## v0.2.1
 
-- Moved the `anakata:api-error` hook and `anakata.displayTimeZone` AppConfig augmentation to `app/types/anakata-augment.d.ts` so it is committed. `nuxt.d.ts` stays gitignored (Nuxt’s generated file).
+- Moved the `iconic:api-error` hook and `iconic.displayTimeZone` AppConfig augmentation to `app/types/iconic-augment.d.ts` so it is committed. `nuxt.d.ts` stays gitignored (Nuxt’s generated file).
 
 ## v0.2.0
 
 - Generated API types from the Scramble OpenAPI spec (`pnpm types:api`, committed `app/types/api.d.ts`) and Sprint 1 aliases (`Me`, `Role`, `PermissionItem`, `UserListItem`, `ChangeHistoryEntry`, `Paginated<T>`).
-- `createApiClient` `onError` callback and the `anakata:api-error` Nuxt runtime hook (not fired on a 419 that succeeds on retry).
-- `useDates()` display time zone (`anakata.displayTimeZone`, default UTC): instants convert with `hourCycle: 'h23'`; calendar dates never shift; naive datetimes throw. New `time` style and `zoneLabel()`.
+- `createApiClient` `onError` callback and the `iconic:api-error` Nuxt runtime hook (not fired on a 419 that succeeds on retry).
+- `useDates()` display time zone (`iconic.displayTimeZone`, default UTC): instants convert with `hourCycle: 'h23'`; calendar dates never shift; naive datetimes throw. New `time` style and `zoneLabel()`.
 
 ## v0.1.0
 

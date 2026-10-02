@@ -1,5 +1,5 @@
 {
-  "name": "anakata-ui",
+  "name": "iconic-ui",
   "type": "module",
   "version": "0.17.1",
   "main": "./nuxt.config.ts",

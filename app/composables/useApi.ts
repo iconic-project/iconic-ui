@@ -221,7 +221,7 @@ export function useApi() {
       return readDocumentXsrfToken()
     },
     onError: (error) => {
-      void nuxtApp.callHook('anakata:api-error', error)
+      void nuxtApp.callHook('iconic:api-error', error)
     },
   })
 

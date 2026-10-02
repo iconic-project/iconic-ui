@@ -31,7 +31,7 @@ function pad2(value: number): string {
 
 function configuredTimeZone(): string {
   try {
-    return useAppConfig().anakata?.displayTimeZone ?? 'UTC'
+    return useAppConfig().iconic?.displayTimeZone ?? 'UTC'
   }
   catch {
     return 'UTC'

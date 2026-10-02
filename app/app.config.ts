@@ -3,7 +3,7 @@ const fieldFocus = 'focus-visible:ring-2 focus-visible:ring-inset focus-visible:
 const menu = 'rounded-lg shadow-[var(--shadow-md)] bg-(--bg-surface) ring ring-(--border-subtle)'
 
 export default defineAppConfig({
-  anakata: {
+  iconic: {
     displayTimeZone: 'UTC',
   },
 
