@@ -12,7 +12,7 @@ const rows: Array<TypeRow> = [
   { meta: '.label / AnkLabel · 11px · .06em · --fg-subtle', kind: 'label', sample: 'Guest / client name' },
   { meta: 'panel title · Satoshi 400 · 18px', kind: 'panel', sample: 'Incoming requests' },
   { meta: 'KPI value · Satoshi 700 · 32px · -.02em', kind: 'kpi', sample: 'USD 28,520' },
-  { meta: 'wordmark · Satoshi 700 · uppercase', kind: 'manrope', sample: 'HILO' },
+  { meta: 'wordmark · Satoshi 700 · uppercase', kind: 'manrope', sample: 'Iconic' },
 ]
 </script>
 

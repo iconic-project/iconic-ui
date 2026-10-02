@@ -7,7 +7,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <span class="ank-wordmark" :data-size="size">HILO</span>
+  <span class="ank-wordmark" :data-size="size">Iconic</span>
 </template>
 
 <style scoped>
