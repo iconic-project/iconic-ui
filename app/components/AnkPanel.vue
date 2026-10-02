@@ -26,9 +26,12 @@ const hasHeader = computed(() => Boolean(props.title || slots.actions))
 
 <style scoped>
 .ank-panel {
-  border: 1px solid var(--hair);
-  background: var(--forest-900);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xs);
   margin-bottom: 24px;
+  overflow: hidden;
 }
 
 .ank-panel__header {
@@ -37,16 +40,16 @@ const hasHeader = computed(() => Boolean(props.title || slots.actions))
   justify-content: space-between;
   gap: 16px;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--hair);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .ank-panel__title {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 300;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  font-size: 13px;
-  color: var(--sand);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 18px;
+  color: var(--fg-default);
   margin: 0;
 }
 

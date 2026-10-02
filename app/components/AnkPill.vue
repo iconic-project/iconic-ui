@@ -17,12 +17,15 @@ withDefaults(defineProps<{
 <style scoped>
 .ank-pill {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px;
-  letter-spacing: .14em;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 3px 9px;
-  border: 1px solid var(--hair);
+  padding: 2px 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
 }
 
 .ank-pill[data-tone='ok'] {

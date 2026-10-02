@@ -67,7 +67,7 @@ const tones: Array<{ tone: 'neutral' | 'ok' | 'warn' | 'sand' | 'coral', label: 
     <div class="sg-stack" style="margin-top: 12px">
       <AnkPanel title="Title only">
         <p class="px-5 py-4">
-          Header with Oswald title, no actions.
+          Header with a Satoshi title, no actions.
         </p>
       </AnkPanel>
       <AnkPanel title="Incoming requests">

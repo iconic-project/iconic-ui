@@ -7,11 +7,11 @@ alwaysApply: true
 # anakata-ui — shared layer rules
 
 This repo is a **Nuxt layer** extended by anakata-panel (RMS + CRM) and anakata-engine. It owns:
-- the design tokens (`app/assets/css/main.css`) — variable names identical to the prototypes: `--forest, --forest-950/900/700/600, --coral, --coral-600/400, --ivory, --iv62, --iv38, --hair, --sand, --olive, --ok, --warn`, plus the engine's easing curves `--ease, --eo, --eio`
-- the mapping of those tokens onto Nuxt UI's variables (`--ui-bg*`, `--ui-text*`, `--ui-border*`, `--ui-primary`, `--ui-radius: 0`)
-- the Nuxt UI component overrides (`app.config.ts`) — tuned to the **back office** (RMS and CRM share identical CSS). The engine layers its own size overrides on top in its app.
-- fonts (Oswald, Archivo, IBM Plex Mono, Manrope) via @nuxt/fonts
-- colour mode: **dark is the default**, light is the alternative (the prototypes' `html[data-theme="light"]` becomes Nuxt UI's light mode; their `:root` is dark)
+- the design tokens (`app/assets/css/main.css`) — the HILO brand book scale: `--hilo-blue-*`, `--neutral-*`, `--bg-*`, `--fg-*`, `--border-*`, `--radius-*`, `--shadow-*`. Legacy names (`--forest*`, `--coral*`, `--ivory`, `--iv62`, `--iv38`, `--hair`, `--sand`, `--olive`, `--ok`, `--warn`) alias those tokens. Easing: `--ease`, `--eo`, `--eio`
+- the mapping of those tokens onto Nuxt UI's variables (`--ui-bg*`, `--ui-text*`, `--ui-border*`, `--ui-primary`, `--ui-radius: 8px`)
+- the Nuxt UI component overrides (`app.config.ts`) — cards at 16px, controls at 8px, hairline borders, brand shadows. The engine only increases button padding
+- Satoshi from Fontshare, weights 300, 400, 500, 700, and 900. Loaded by the stylesheet in `nuxt.config.ts` and by the `@nuxt/fonts` family entry
+- colour mode: **light is the default**. Dark uses the brand book's dark tokens
 - shared components, prefixed **`Ank`** (`AnkLabel`, `AnkPill`, `AnkPanel`, `AnkKpi`, `AnkMoney`, `AnkThemeToggle`…)
 - composables: `useApi()`, `useMoney()`, `useDates()`
 - generated API types (`app/types/api.d.ts`, from anakata-api's OpenAPI spec)
@@ -19,9 +19,9 @@ This repo is a **Nuxt layer** extended by anakata-panel (RMS + CRM) and anakata-
 ## Rules
 - Nothing app-specific here. If only one app uses it, it belongs in that app. Exception: a component two apps will share soon.
 - Paths in `nuxt.config.ts` use `createResolver(import.meta.url)` so they resolve when extended.
-- Every visual value is taken from the prototypes' CSS — never from Nuxt UI defaults or taste. When in doubt, open `prototype/index.html` (RMS), find the class, copy the values.
+- Every visual value comes from the HILO brand book (`../anakata-api/docs/brand/hilo-brand-book.html`). Do not invent a second palette or a second typeface.
 - Keep `@nuxt/ui` and `tailwindcss` versions identical to the three apps.
 - The `.playground` app contains a **style guide page** showing every token, every themed Nuxt UI component and every `Ank*` component in both themes. Update it whenever you add or change something.
-- Apps (panel, engine) extend this layer via the local path `../anakata-ui` for now. How they fetch it remotely is decided later with the git host.
+- Apps (panel, engine, portal) extend this layer via the local path `../iconic-ui`. How they fetch it remotely is decided later with the git host.
 - Quality: local `lint`, `typecheck`, `test` and `build` must pass.
 - Releases: semantic version git tags (`v0.1.0`, `v0.2.0`…). Breaking changes bump the minor while < 1.0. Write a line in `CHANGELOG.md` per release.

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The shared theme follows the HILO brand book. Satoshi replaces Oswald, Archivo, IBM Plex Mono, and Manrope. Light is the default colour mode. Cards are 16px, controls are 8px, and cobalt is the primary action colour. `AnkWordmark` is the HILO wordmark.
+
 ## v0.17.1
 
 - The `@internationalized/date` alias is set only when the layer has that package installed. A git clone of the layer (Netlify) has no `node_modules`, so the alias no longer points Vite at a missing path.

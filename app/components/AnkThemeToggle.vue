@@ -15,7 +15,7 @@ function toggle(): void {
   <UButton
     color="neutral"
     variant="outline"
-    class="ank-theme-toggle"
+    class="ank-theme-toggle rounded-full"
     :aria-label="t('theme.toggleAria')"
     @click="toggle"
   >
@@ -25,6 +25,9 @@ function toggle(): void {
 
 <style scoped>
 .ank-theme-toggle {
-  padding: 9px 14px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
 }
 </style>

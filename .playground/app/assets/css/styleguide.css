@@ -53,9 +53,9 @@
 .sg-swatch__name,
 .sg-swatch__value,
 .sg-ease {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  letter-spacing: .12em;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--iv62);
   margin: 0;
@@ -65,7 +65,7 @@
 .sg-swatch__value {
   margin-top: 6px;
   color: var(--ivory);
-  letter-spacing: .06em;
+  letter-spacing: 0;
   text-transform: none;
 }
 
@@ -86,37 +86,37 @@
 }
 
 .sg-type-h1 {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 300;
-  font-size: 21px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: 0;
+  text-transform: none;
   margin: 0;
 }
 
 .sg-type-body {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 300;
-  font-size: 13.5px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
   line-height: 1.6;
   margin: 0;
 }
 
 .sg-type-panel {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 300;
-  font-size: 13px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--sand);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fg-default);
   margin: 0;
 }
 
 .sg-type-kpi {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 300;
-  font-size: 23px;
-  letter-spacing: .04em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -166,9 +166,9 @@
 }
 
 .sg-compare figcaption {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px;
-  letter-spacing: .14em;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--iv38);
   margin-top: 8px;

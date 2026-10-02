@@ -37,7 +37,7 @@ const page = ref(2)
     </AnkLabel>
     <UCard>
       <template #header>
-        <h3 class="font-display font-light text-[13px] tracking-[.2em] uppercase text-(--sand)">
+        <h3 class="font-display font-normal text-[22px] tracking-normal text-(--fg-default)">
           Bookings
         </h3>
       </template>

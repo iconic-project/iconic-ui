@@ -2,169 +2,281 @@
 @import "@nuxt/ui";
 
 @theme {
-  --font-sans: 'Archivo', sans-serif;
-  --font-display: 'Oswald', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
-  --font-manrope: 'Manrope', sans-serif;
+  --font-sans: "Satoshi", "Satoshi Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Satoshi", "Satoshi Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "Satoshi", "Satoshi Variable", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-manrope: "Satoshi", "Satoshi Variable", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* coral: 400 #EF7365 · 500 #E85646 · 600 #D24537 — remaining shades generated */
-  --color-coral-50: #FEF7F6;
-  --color-coral-100: #FDEEED;
-  --color-coral-200: #F9D5D1;
-  --color-coral-300: #F5B3AC;
-  --color-coral-400: #EF7365;
-  --color-coral-500: #E85646;
-  --color-coral-600: #D24537;
-  --color-coral-700: #A23C31;
-  --color-coral-800: #742B23;
-  --color-coral-900: #511E19;
-  --color-coral-950: #2E110E;
+  --radius-xs: 4px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 20px;
 
-  --color-ok-50: #F9FAF8;
-  --color-ok-100: #F2F6F2;
-  --color-ok-200: #DFE8DE;
-  --color-ok-300: #C5D6C3;
-  --color-ok-400: #A5BFA2;
-  --color-ok-500: #7FA37A;
-  --color-ok-600: #708F6B;
-  --color-ok-700: #597255;
-  --color-ok-800: #40523D;
-  --color-ok-900: #2C392B;
-  --color-ok-950: #192118;
+  /* HILO Cobalt. Stops match the brand book. */
+  --color-hilo-50: #EEF0FE;
+  --color-hilo-100: #D9DCFC;
+  --color-hilo-200: #B5BAFA;
+  --color-hilo-300: #8B92F6;
+  --color-hilo-400: #6168F0;
+  --color-hilo-500: #3D4AE5;
+  --color-hilo-600: #2E38C9;
+  --color-hilo-700: #232BA3;
+  --color-hilo-800: #1A2080;
+  --color-hilo-900: #131860;
+  --color-hilo-950: #0B0E3D;
 
-  --color-warn-50: #FDFBF7;
-  --color-warn-100: #FBF6F0;
-  --color-warn-200: #F6E9D9;
-  --color-warn-300: #EED8BB;
-  --color-warn-400: #E4C295;
-  --color-warn-500: #D9A868;
-  --color-warn-600: #BF945C;
-  --color-warn-700: #987649;
-  --color-warn-800: #6D5434;
-  --color-warn-900: #4C3B24;
-  --color-warn-950: #2B2215;
+  /* Ink. Brand neutrals. 50 starts at neutral-50; 950 is neutral-950. */
+  --color-ink-50: #F5F6F8;
+  --color-ink-100: #ECEEF2;
+  --color-ink-200: #DDE0E6;
+  --color-ink-300: #C2C7D0;
+  --color-ink-400: #9097A3;
+  --color-ink-500: #686F7B;
+  --color-ink-600: #4A5060;
+  --color-ink-700: #313747;
+  --color-ink-800: #1E2333;
+  --color-ink-900: #131725;
+  --color-ink-950: #0A0B12;
 
-  --color-sand-50: #FDFDFB;
-  --color-sand-100: #FCFBF8;
-  --color-sand-200: #F7F5ED;
-  --color-sand-300: #F1ECDF;
-  --color-sand-400: #E9E2CD;
-  --color-sand-500: #E0D5B8;
-  --color-sand-600: #C5BBA2;
-  --color-sand-700: #9D9581;
-  --color-sand-800: #706B5C;
-  --color-sand-900: #4E4B40;
-  --color-sand-950: #2D2B25;
+  /* Success. 50, 500 and 700 are the brand book. Other stops are interpolated. */
+  --color-gain-50: #ECFAF2;
+  --color-gain-100: #D3F5E3;
+  --color-gain-200: #A8E8C6;
+  --color-gain-300: #95DDB6;
+  --color-gain-400: #3CB872;
+  --color-gain-500: #1B9D5C;
+  --color-gain-600: #16824C;
+  --color-gain-700: #0F5C36;
+  --color-gain-800: #0C4529;
+  --color-gain-900: #09321E;
+  --color-gain-950: #051C10;
 
-  --color-forest-50: #F4F4F4;
-  --color-forest-100: #E9EAE9;
-  --color-forest-200: #C7CAC9;
-  --color-forest-300: #9BA09D;
-  --color-forest-400: #636B67;
-  --color-forest-500: #202B26;
-  --color-forest-600: #37453D;
-  --color-forest-700: #2A362F;
-  --color-forest-800: #222D27;
-  --color-forest-900: #1A231E;
-  --color-forest-950: #141B17;
+  /* Warning. 50 and 700 are the brand book. Other stops are interpolated. */
+  --color-caution-50: #FEF6E7;
+  --color-caution-100: #FDECC4;
+  --color-caution-200: #FBD88A;
+  --color-caution-300: #F0C15A;
+  --color-caution-400: #E0A820;
+  --color-caution-500: #C48A0C;
+  --color-caution-600: #9A6C09;
+  --color-caution-700: #714B07;
+  --color-caution-800: #543806;
+  --color-caution-900: #3A2704;
+  --color-caution-950: #211603;
 
-  --color-coral-deep-50: #FDF6F5;
-  --color-coral-deep-100: #FBECEB;
-  --color-coral-deep-200: #F4D1CD;
-  --color-coral-deep-300: #EBABA5;
-  --color-coral-deep-400: #E07D73;
-  --color-coral-deep-500: #D24537;
-  --color-coral-deep-600: #B93D30;
-  --color-coral-deep-700: #933027;
-  --color-coral-deep-800: #69231C;
-  --color-coral-deep-900: #4A1813;
-  --color-coral-deep-950: #2A0E0B;
+  /* Danger. 50, 500 and 700 are the brand book. 300 is the dark-theme label. */
+  --color-alert-50: #FDECEC;
+  --color-alert-100: #FAD4D3;
+  --color-alert-200: #F4A8A6;
+  --color-alert-300: #F1A4A1;
+  --color-alert-400: #E04E4A;
+  --color-alert-500: #D7332E;
+  --color-alert-600: #B82824;
+  --color-alert-700: #8A1A17;
+  --color-alert-800: #681412;
+  --color-alert-900: #4A0E0C;
+  --color-alert-950: #2A0807;
 }
-
-:root {  /* LIGHT, from html[data-theme="light"]; the later --iv38 override wins */
-  --forest:#EFEDDD; --forest-950:#FAF9F0; --forest-900:#F6F4E6; --forest-700:#E7E4D0; --forest-600:#D9D4BC;
-  --coral:#E85646; --coral-600:#C43D2E; --coral-400:#C03A2B;
-  --ivory:#202B26; --iv62:rgba(32,43,38,.68); --iv38:rgba(32,43,38,.52);
-  --sand:#8A7340; --olive:#6B6C4F; --hair:rgba(32,43,38,.16);
-  --ok:#43704F; --warn:#A87428;
-}
-.dark {  /* DARK, from the prototypes' :root (default) */
-  --forest:#202B26; --forest-950:#141B17; --forest-900:#1A231E; --forest-700:#2A362F; --forest-600:#37453D;
-  --coral:#E85646; --coral-600:#D24537; --coral-400:#EF7365;
-  --ivory:#F2F1E1; --iv62:rgba(242,241,225,.62); --iv38:rgba(242,241,225,.38);
-  --sand:#E0D5B8; --olive:#585940; --hair:rgba(242,241,225,.14);
-  --ok:#7FA37A; --warn:#D9A868;
-}
-:root { --ease:cubic-bezier(.16,1,.3,1); --eo:cubic-bezier(.23,1,.32,1); --eio:cubic-bezier(.77,0,.175,1); }
 
 :root {
-  --ui-bg: var(--forest-950);
-  --ui-bg-muted: var(--forest-900);
-  --ui-bg-elevated: var(--forest);
-  --ui-bg-accented: var(--forest-700);
-  --ui-bg-inverted: var(--ivory);
-  --ui-text: var(--ivory);
-  --ui-text-highlighted: var(--ivory);
-  --ui-text-toned: var(--iv62);
-  --ui-text-muted: var(--iv62);
-  --ui-text-dimmed: var(--iv38);
-  --ui-text-inverted: var(--forest-950);
-  --ui-border: var(--hair);
-  --ui-border-muted: var(--hair);
-  --ui-border-accented: var(--forest-600);
-  --ui-primary: var(--coral);
-  --ui-success: var(--ok);
-  --ui-warning: var(--warn);
-  --ui-info: var(--sand);
-  --ui-error: var(--coral-600);
-  --ui-radius: 0;
+  --hilo-blue-50: #EEF0FE;
+  --hilo-blue-100: #D9DCFC;
+  --hilo-blue-200: #B5BAFA;
+  --hilo-blue-300: #8B92F6;
+  --hilo-blue-400: #6168F0;
+  --hilo-blue-500: #3D4AE5;
+  --hilo-blue-600: #2E38C9;
+  --hilo-blue-700: #232BA3;
+  --hilo-blue-800: #1A2080;
+  --hilo-blue-900: #131860;
+  --hilo-blue-950: #0B0E3D;
+  --hilo-blue: var(--hilo-blue-500);
+
+  --neutral-0: #FFFFFF;
+  --neutral-25: #FBFBFC;
+  --neutral-50: #F5F6F8;
+  --neutral-100: #ECEEF2;
+  --neutral-200: #DDE0E6;
+  --neutral-300: #C2C7D0;
+  --neutral-400: #9097A3;
+  --neutral-500: #686F7B;
+  --neutral-600: #4A5060;
+  --neutral-700: #313747;
+  --neutral-800: #1E2333;
+  --neutral-900: #131725;
+  --neutral-950: #0A0B12;
+
+  --success-50: #ECFAF2;
+  --success-500: #1B9D5C;
+  --success-700: #0F5C36;
+  --warning-50: #FEF6E7;
+  --warning-700: #714B07;
+  --danger-50: #FDECEC;
+  --danger-500: #D7332E;
+  --danger-700: #8A1A17;
+
+  --bg-canvas: var(--neutral-25);
+  --bg-surface: var(--neutral-0);
+  --bg-surface-alt: var(--neutral-50);
+  --bg-surface-sunk: var(--neutral-100);
+  --fg-default: var(--neutral-950);
+  --fg-muted: var(--neutral-600);
+  --fg-subtle: var(--neutral-500);
+  --fg-disabled: var(--neutral-400);
+  --fg-brand: var(--hilo-blue-600);
+  --border-subtle: var(--neutral-200);
+  --border-default: var(--neutral-300);
+
+  --font-serif: "Tiempos Headline", "GT Sectra", Cambria, Georgia, serif;
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-wide: 0.04em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 2px rgba(10, 11, 18, 0.04);
+  --shadow-sm: 0 1px 3px rgba(10, 11, 18, 0.06), 0 1px 2px rgba(10, 11, 18, 0.04);
+  --shadow-md: 0 4px 12px rgba(10, 11, 18, 0.06), 0 2px 4px rgba(10, 11, 18, 0.04);
+  --shadow-lg: 0 12px 32px rgba(10, 11, 18, 0.08), 0 4px 8px rgba(10, 11, 18, 0.04);
+
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --eo: cubic-bezier(0.16, 1, 0.3, 1);
+  --eio: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Legacy names. Apps still read these. They point at the brand tokens. */
+  --forest: var(--bg-surface);
+  --forest-950: var(--bg-canvas);
+  --forest-900: var(--bg-surface);
+  --forest-700: var(--bg-surface-alt);
+  --forest-600: var(--bg-surface-sunk);
+  --coral: var(--hilo-blue-500);
+  --coral-600: var(--hilo-blue-600);
+  --coral-400: var(--hilo-blue-400);
+  --ivory: var(--fg-default);
+  --iv62: var(--fg-muted);
+  --iv38: var(--fg-subtle);
+  --sand: var(--fg-brand);
+  --olive: var(--neutral-600);
+  --hair: var(--border-subtle);
+  --ok: var(--success-700);
+  --warn: var(--warning-700);
+
+  --ui-bg: var(--bg-canvas);
+  --ui-bg-muted: var(--bg-surface-alt);
+  --ui-bg-elevated: var(--bg-surface);
+  --ui-bg-accented: var(--bg-surface-sunk);
+  --ui-bg-inverted: var(--fg-default);
+  --ui-text: var(--fg-default);
+  --ui-text-highlighted: var(--fg-default);
+  --ui-text-toned: var(--fg-muted);
+  --ui-text-muted: var(--fg-muted);
+  --ui-text-dimmed: var(--fg-subtle);
+  --ui-text-inverted: var(--bg-canvas);
+  --ui-border: var(--border-subtle);
+  --ui-border-muted: var(--border-subtle);
+  --ui-border-accented: var(--border-default);
+  --ui-primary: var(--hilo-blue-500);
+  --ui-success: var(--success-500);
+  --ui-warning: var(--warning-700);
+  --ui-info: var(--hilo-blue-600);
+  --ui-error: var(--danger-500);
+  --ui-radius: 8px;
+}
+
+.dark {
+  --bg-canvas: var(--neutral-950);
+  --bg-surface: var(--neutral-900);
+  --bg-surface-alt: var(--neutral-800);
+  --bg-surface-sunk: #06070C;
+  --fg-default: var(--neutral-25);
+  --fg-muted: var(--neutral-300);
+  --fg-subtle: var(--neutral-400);
+  --fg-disabled: var(--neutral-600);
+  --fg-brand: var(--hilo-blue-300);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.14);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55), 0 4px 8px rgba(0, 0, 0, 0.35);
+
+  --ok: #95DDB6;
+  --warn: #E8C98A;
+  --ui-text-inverted: var(--neutral-950);
 }
 
 @layer base {
   body {
-    background-color: var(--forest-950);
-    color: var(--ivory);
-    font-family: 'Archivo', sans-serif;
-    font-weight: 300;
-    font-size: 13.5px;
+    background-color: var(--bg-canvas);
+    color: var(--fg-default);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 16px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   h1 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 300;
-    font-size: 21px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 1.15;
   }
 
-  .mono {
-    font-family: 'IBM Plex Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    font-size: 10px;
+  strong, b {
+    font-weight: 700;
   }
 
-  .label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px;
-    letter-spacing: .2em;
+  .mono, .label {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--iv62);
+    color: var(--fg-subtle);
   }
 
   .font-manrope {
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--font-sans);
   }
 
   :focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
-    outline: 1px solid var(--coral);
+    outline: 2px solid var(--hilo-blue-500);
     outline-offset: 2px;
   }
 }
 
-/* Unlayered so this beats Nuxt UI's focus-visible:outline-3 utilities. Same rule as @layer base. */
 :focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
-  outline: 1px solid var(--coral);
+  outline: 2px solid var(--hilo-blue-500);
   outline-offset: 2px;
 }

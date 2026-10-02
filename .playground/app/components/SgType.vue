@@ -3,19 +3,16 @@ type TypeRow = {
   meta: string
   kind: 'h1' | 'body' | 'mono' | 'label' | 'panel' | 'kpi' | 'manrope'
   sample: string
-  manropeWeight?: 'normal' | 'medium' | 'semibold'
 }
 
 const rows: Array<TypeRow> = [
-  { meta: 'h1 · Oswald 300 · 21px · .16em', kind: 'h1', sample: 'Bookings' },
-  { meta: 'body · Archivo 300 · 13.5px / 1.6', kind: 'body', sample: 'Body text in Archivo on --ivory, for checking type and colour in both themes.' },
-  { meta: '.mono · IBM Plex Mono · 10px · .2em', kind: 'mono', sample: 'Mono label' },
-  { meta: '.label / AnkLabel · 9px · .2em · --iv62', kind: 'label', sample: 'Guest / client name' },
-  { meta: 'panel title · Oswald 300 · 13px · .2em · --sand', kind: 'panel', sample: 'Incoming requests' },
-  { meta: 'KPI value · Oswald 300 · 23px · .04em', kind: 'kpi', sample: 'USD 28,520' },
-  { meta: 'Manrope 400 · engine', kind: 'manrope', sample: 'Manrope 400', manropeWeight: 'normal' },
-  { meta: 'Manrope 500 · engine', kind: 'manrope', sample: 'Manrope 500', manropeWeight: 'medium' },
-  { meta: 'Manrope 600 · engine', kind: 'manrope', sample: 'Manrope 600', manropeWeight: 'semibold' },
+  { meta: 'h1 · Satoshi 400 · 28px · tracking 0', kind: 'h1', sample: 'Bookings' },
+  { meta: 'body · Satoshi 400 · 16px / 1.6', kind: 'body', sample: 'Body text in Satoshi on ink, for checking type and colour in both themes.' },
+  { meta: '.mono · Satoshi 400 · 11px · .06em · uppercase', kind: 'mono', sample: 'Section label' },
+  { meta: '.label / AnkLabel · 11px · .06em · --fg-subtle', kind: 'label', sample: 'Guest / client name' },
+  { meta: 'panel title · Satoshi 400 · 18px', kind: 'panel', sample: 'Incoming requests' },
+  { meta: 'KPI value · Satoshi 700 · 32px · -.02em', kind: 'kpi', sample: 'USD 28,520' },
+  { meta: 'wordmark · Satoshi 700 · uppercase', kind: 'manrope', sample: 'HILO' },
 ]
 </script>
 
@@ -52,12 +49,7 @@ const rows: Array<TypeRow> = [
       </p>
       <p
         v-else
-        class="font-manrope"
-        :class="{
-          'font-normal': row.manropeWeight === 'normal',
-          'font-medium': row.manropeWeight === 'medium',
-          'font-semibold': row.manropeWeight === 'semibold',
-        }"
+        class="font-sans font-bold uppercase tracking-normal text-[22px]"
       >
         {{ row.sample }}
       </p>

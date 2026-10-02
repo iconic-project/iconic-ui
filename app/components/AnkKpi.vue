@@ -23,29 +23,35 @@ defineProps<{
 
 <style scoped>
 .ank-kpi {
-  background: var(--forest-900);
-  padding: 18px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xs);
+  padding: 20px 24px;
 }
 
 .ank-kpi__label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px;
-  letter-spacing: .18em;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--iv38);
+  color: var(--fg-brand);
   margin-bottom: 8px;
 }
 
 .ank-kpi__value {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 300;
-  font-size: 23px;
-  letter-spacing: .04em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .ank-kpi__sub {
-  font-size: 11px;
-  color: var(--iv62);
-  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--fg-muted);
+  margin-top: 6px;
 }
 </style>

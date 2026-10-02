@@ -13,15 +13,24 @@ export default defineNuxtConfig({
     ? { '@internationalized/date': internationalizedDate }
     : {},
   colorMode: {
-    preference: 'dark',
-    fallback: 'dark',
+    preference: 'light',
+    fallback: 'light',
+  },
+  app: {
+    head: {
+      link: [
+        { rel: 'preconnect', href: 'https://api.fontshare.com' },
+        { rel: 'preconnect', href: 'https://cdn.fontshare.com', crossorigin: 'anonymous' },
+        {
+          rel: 'stylesheet',
+          href: 'https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap',
+        },
+      ],
+    },
   },
   fonts: {
     families: [
-      { name: 'Oswald', provider: 'google', weights: [300, 400] },
-      { name: 'Archivo', provider: 'google', weights: [300, 400, 500] },
-      { name: 'IBM Plex Mono', provider: 'google', weights: [400, 500] },
-      { name: 'Manrope', provider: 'google', weights: [400, 500, 600] },
+      { name: 'Satoshi', provider: 'fontshare', weights: [300, 400, 500, 700, 900] },
     ],
   },
   i18n: {
