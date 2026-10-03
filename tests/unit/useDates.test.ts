@@ -74,3 +74,32 @@ describe('useDates', () => {
     expect(zoneLabel('Europe/London')).toBe('Europe/London')
   })
 })
+
+describe('stay dates', () => {
+  const { nightsBetween, eachNight, addNights, formatStay } = useDates()
+
+  it('counts nights across a month boundary', () => {
+    expect(nightsBetween('2028-01-31', '2028-02-02')).toBe(2)
+    expect(eachNight('2028-01-31', '2028-02-02')).toEqual(['2028-01-31', '2028-02-01'])
+    expect(addNights('2028-01-31', 1)).toBe('2028-02-01')
+  })
+
+  it('counts nights across a year boundary', () => {
+    expect(nightsBetween('2027-12-30', '2028-01-02')).toBe(3)
+    expect(eachNight('2027-12-30', '2028-01-02')).toEqual(['2027-12-30', '2027-12-31', '2028-01-01'])
+    expect(formatStay('2027-12-31', '2028-01-01')).toBe('Fri 31 Dec 2027 – Sat 1 Jan 2028 · 1 night')
+  })
+
+  it('counts the leap day in 2028 and skips it in 2027', () => {
+    expect(addNights('2028-02-28', 1)).toBe('2028-02-29')
+    expect(nightsBetween('2028-02-28', '2028-03-01')).toBe(2)
+    expect(eachNight('2028-02-28', '2028-03-01')).toEqual(['2028-02-28', '2028-02-29'])
+    expect(addNights('2027-02-28', 1)).toBe('2027-03-01')
+    expect(nightsBetween('2027-02-28', '2027-03-01')).toBe(1)
+  })
+
+  it('formats a same-year stay with the year on the check-out', () => {
+    expect(formatStay('2028-03-07', '2028-03-10')).toBe('Tue 7 Mar – Fri 10 Mar 2028 · 3 nights')
+    expect(eachNight('2028-03-07', '2028-03-10')).toEqual(['2028-03-07', '2028-03-08', '2028-03-09'])
+  })
+})

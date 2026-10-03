@@ -27,7 +27,7 @@ export type EngineLabelCode = components['schemas']['EngineLabelCode']
 export type EngineLabelTone = 'wait' | 'comp' | 'pend' | 'canc' | 'hold' | 'conf'
 
 /**
- * Mirrors App\Http\Resources\Rms\YachtResource cabins.
+ * Mirrors App\Enums\CabinState leftover used by the departure calendar.
  * Generated items type id / sort as string.
  */
 export type Cabin = {
@@ -38,9 +38,12 @@ export type Cabin = {
   sort: number
 }
 
-export type Yacht = Omit<components['schemas']['YachtResource'], 'cabins'> & {
-  cabins: Array<Cabin>
-}
+/**
+ * Mirrors App\Http\Resources\Rms\PropertyResource.
+ * The generated name is PropertyResource. Screens that still say yacht
+ * import this alias until they move to properties.
+ */
+export type Yacht = components['schemas']['PropertyResource']
 
 /** Mirrors itinerary facts / day_plan / faqs pairs (list<array{0: string, 1: string}>). */
 export type ItineraryPair = [string, string]

@@ -6,5 +6,19 @@
   },
   "date": {
     "chooseAria": "Choose a date"
+  },
+  "stay": {
+    "chooseArrival": "Choose a check-in date",
+    "chooseDeparture": "Choose a check-out date",
+    "nights": "{count} night | {count} nights",
+    "clear": "Clear stay",
+    "pickerAria": "Choose check-in and check-out",
+    "closedToArrival": "That date is closed to arrival.",
+    "closedToDeparture": "That date is closed to departure.",
+    "tooShort": "A stay must be at least {min} nights.",
+    "tooLong": "A stay cannot be longer than {max} nights.",
+    "unavailable": "That date is not available.",
+    "unavailableNight": "Those dates include a night that is not available.",
+    "checkOutAfter": "Check-out must be after check-in."
   }
 }

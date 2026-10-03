@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `AnkStayInput` is the shared two-month stay picker. `AnkNights` is the nights pill. `useDates` adds `nightsBetween`, `eachNight`, `addNights` and `formatStay` for plain `YYYY-MM-DD` dates.
 - The shared theme follows the HILO brand book. Satoshi replaces Oswald, Archivo, IBM Plex Mono, and Manrope. Light is the default colour mode. Cards are 16px, controls are 8px, and cobalt is the primary action colour. `AnkWordmark` is the HILO wordmark.
 
 ## v0.17.1

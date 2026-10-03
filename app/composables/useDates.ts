@@ -10,6 +10,7 @@ const ISO_DATETIME = /^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}(?::\d{2}(?:\.\d{1,9})?)?
 const SHORT_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] as const
 const LONG_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] as const
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] as const
+const SHORT_WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const
 
 const ZONE_LABELS: Record<string, string> = {
   'Pacific/Galapagos': 'Galápagos time · UTC−6',
@@ -188,10 +189,53 @@ export function useDates() {
     return ZONE_LABELS[zone] ?? zone
   }
 
+  function addNights(date: string, nights: number): string {
+    const parsed = parseIso(date)
+    parsed.setUTCDate(parsed.getUTCDate() + nights)
+
+    return toIso(parsed)
+  }
+
+  function nightsBetween(checkIn: string, checkOut: string): number {
+    const milliseconds = parseIso(checkOut).getTime() - parseIso(checkIn).getTime()
+
+    return Math.round(milliseconds / 86_400_000)
+  }
+
+  function eachNight(checkIn: string, checkOut: string): string[] {
+    const count = nightsBetween(checkIn, checkOut)
+    const nights: string[] = []
+
+    for (let index = 0; index < count; index++) {
+      nights.push(addNights(checkIn, index))
+    }
+
+    return nights
+  }
+
+  function formatStayPart(iso: string, withYear: boolean): string {
+    const date = parseIso(iso)
+    const label = `${SHORT_WEEKDAYS[date.getUTCDay()]} ${date.getUTCDate()} ${SHORT_MONTHS[date.getUTCMonth()]}`
+
+    return withYear ? `${label} ${date.getUTCFullYear()}` : label
+  }
+
+  function formatStay(checkIn: string, checkOut: string): string {
+    const sameYear = parseIso(checkIn).getUTCFullYear() === parseIso(checkOut).getUTCFullYear()
+    const nights = nightsBetween(checkIn, checkOut)
+    const nightLabel = nights === 1 ? '1 night' : `${nights} nights`
+
+    return `${formatStayPart(checkIn, !sameYear)} – ${formatStayPart(checkOut, true)} · ${nightLabel}`
+  }
+
   return {
     toIso,
     parseIso,
     format,
     zoneLabel,
+    nightsBetween,
+    eachNight,
+    addNights,
+    formatStay,
   }
 }

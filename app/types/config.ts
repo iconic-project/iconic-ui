@@ -359,6 +359,8 @@ export type RuleGroup =
   | 'guests_capacity'
   | 'data_retention'
   | 'legal'
+  | 'crm'
+  | 'stay'
   | 'structural_locked'
 
 /** Mirrors App\Enums\RuleStatus. Update when the PHP enum changes. */
