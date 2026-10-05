@@ -7,7 +7,9 @@ import type { components, operations } from './api'
 import type { CabinCategory } from './inventory'
 import type { CancellationBandLabel, PaymentLink, RefundStatus } from './payments'
 
-export type BookingStatus = components['schemas']['BookingStatus']
+export type BookingStatus = components['schemas']['BookingStatus'] | 'IN_HOUSE' | 'CHECKED_OUT' | 'NO_SHOW'
+
+export type DeskAction = 'check_in' | 'check_out' | 'no_show' | 'modify_stay' | 'move_room'
 export type BookingType = components['schemas']['BookingType']
 export type BookingSegment = components['schemas']['BookingSegment']
 export type MainChannel = components['schemas']['MainChannel']
@@ -106,13 +108,67 @@ export type Booking = Omit<
     due_by: string
   } | null
   payment_links: Array<PaymentLink>
+  property_id: number | null
+  stay: {
+    check_in: string
+    check_out: string
+    nights: number
+  } | null
+  room: {
+    id: number
+    code: string
+    label: string
+  } | null
+  room_type: {
+    id: number
+    code: string
+    name: string
+  } | null
+  rate_plan: string | null
+  night_lines: Array<{ night: string, total: number }> | null
+  tax_lines: Array<{ code: string, label: string, amount: number, charged: boolean }> | null
+  times: {
+    expected_arrival_time: string | null
+    checked_in_at: string | null
+    checked_out_at: string | null
+    no_show_at: string | null
+  }
+  allowed_actions: Array<DeskAction>
 }
 
 export type BookingListItem = Booking
 
 export type BookingQuoteRequest = components['schemas']['QuoteReservationRequest']
 export type CreateReservationRequest = components['schemas']['StoreReservationRequest']
-export type BookingFormOptions = components['schemas']['BookingFormOptionsResource']
+export type StayFormRoomType = {
+  id: number
+  code: string
+  name: string
+  property_id: number
+  base_occupancy: number
+  max_occupancy: number
+  max_adults: number
+  max_children: number
+  restrictions: Array<string>
+}
+
+export type BookingFormOptions = components['schemas']['BookingFormOptionsResource'] & {
+  stay: {
+    min_nights: number
+    max_nights: number
+    max_rooms_per_booking: number
+    booking_horizon_days: number
+  }
+  room_types: Array<StayFormRoomType>
+  rate_plans: Array<{
+    code: string
+    name: string
+    default: boolean
+    deposit_pct: number
+    balance_days: number
+    refundable: boolean
+  }>
+}
 
 /**
  * Mirrors App\Http\Resources\Rms\ReservationQuoteResource.
@@ -172,7 +228,7 @@ export type BookingAuditRow = Omit<
  */
 export type RequestQueueItem = Omit<
   components['schemas']['BookingRequestResource'],
-  'can_act' | 'party' | 'contact' | 'hold' | 'sla'
+  'can_act' | 'party' | 'contact' | 'hold' | 'sla' | 'departure' | 'cabin_label'
 > & {
   can_act: boolean
   party: string
@@ -182,6 +238,18 @@ export type RequestQueueItem = Omit<
   }
   hold: BookingRequestSummary['hold']
   sla: BookingRequestSummary['sla']
+  stay: {
+    check_in: string
+    check_out: string
+  }
+  nights: number
+  room_type: {
+    id: number
+    code: string
+    name: string
+  } | null
+  rooms_count: number
+  copy: string
 }
 
 /**
