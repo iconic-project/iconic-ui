@@ -218,6 +218,74 @@ export type CalendarGrid = {
   rows: Array<CalendarRow>
 }
 
+/** Mirrors App\Enums\RoomNightState. */
+export type NightState = 'FREE' | 'HELD' | 'SOLD' | 'BLOCKED'
+
+/** Mirrors the claim object on App\Services\Inventory\NightGrid. */
+export type NightClaim = {
+  claim_group: string
+  reference: string | null
+  guest_surname: string | null
+  owner: string | null
+  holder_type: string
+  holder_id: number
+}
+
+/** Mirrors one cell on App\Services\Inventory\NightGrid. */
+export type NightCell = {
+  night: string
+  state: NightState
+  claim: NightClaim | null
+}
+
+/** Mirrors one room row on App\Services\Inventory\NightGrid. */
+export type NightRoom = {
+  id: number
+  code: string
+  label: string
+  sort: number
+  room_type: {
+    id: number
+    code: string
+    name: string
+  }
+  cells: Array<NightCell>
+}
+
+/** Mirrors the per-night type counts on App\Services\Inventory\NightGrid. */
+export type NightCounts = {
+  total: number
+  free: number
+  held: number
+  sold: number
+  blocked: number
+}
+
+/** Mirrors App\Services\Inventory\NightGrid. `to` is exclusive. */
+export type NightCalendar = {
+  property: {
+    id: number
+    code: string
+    name: string
+  }
+  from: string
+  to: string
+  nights: Array<string>
+  rooms: Array<NightRoom>
+  counts: Record<string, Record<string, NightCounts>>
+  occupancy: {
+    room_nights_available: number
+    room_nights_sold: number
+    pct: number
+  }
+  kpis: {
+    occupancy_pct: number
+    free_room_nights: number
+    nights_fully_sold: number
+    nights_below_threshold: number
+  }
+}
+
 export type BlockClaim = Omit<
   components['schemas']['InternalBlockResource']['claims'][number],
   'kind'
