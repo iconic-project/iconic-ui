@@ -33,12 +33,82 @@ export type RateRules = {
   festive_supplement_charter: number
 }
 
+/** Mirrors App\Support\Config\Documents\Rates\Season. Update when the PHP class changes. */
+export type RateSeason = {
+  code: string
+  name: string
+  from: string
+  to: string
+}
+
+/** Mirrors App\Support\Config\Documents\Rates\RoomRate. Update when the PHP class changes. */
+export type RoomNightlyRate = {
+  room_type: string
+  season: string
+  nightly: number
+}
+
+/** Mirrors App\Support\Config\Documents\Rates\Occupancy. Update when the PHP class changes. */
+export type RateOccupancy = {
+  extra_adult_nightly: number
+  extra_child_nightly: number
+  single_occupancy_pct: number
+}
+
+/** Mirrors App\Support\Config\Documents\Rates\DayOfWeek. Keys are ISO weekdays 1–7. */
+export type RateDayOfWeek = {
+  '1': number
+  '2': number
+  '3': number
+  '4': number
+  '5': number
+  '6': number
+  '7': number
+}
+
+/** Mirrors App\Support\Config\Documents\Rates\LengthOfStayBand. Update when the PHP class changes. */
+export type RateLengthOfStay = {
+  min_nights: number
+  discount_pct: number
+}
+
+/** Mirrors App\Support\Config\Documents\Rates\Supplement. Update when the PHP class changes. */
+export type RateSupplement = {
+  code: string
+  label: string
+  from: string
+  to: string
+  per_night: number
+  basis: 'ROOM' | 'PERSON'
+}
+
+/** Mirrors App\Support\Config\Documents\Rates\RatePlan. Update when the PHP class changes. */
+export type RatePlan = {
+  code: string
+  name: string
+  default: boolean
+  adjust_pct: number
+  refundable: boolean
+  deposit_pct: number
+  balance_days: number
+  cancellation: string
+  meal_plan: 'RO' | 'BB' | 'HB' | 'FB'
+}
+
 /** Mirrors App\Support\Config\Documents\RatesDocument. Update when the PHP document changes. */
 export type RatesDocument = {
   currency: string
+  schema_version: number
   years: Array<RateYear>
   terms: RateTerms
   rules: RateRules
+  seasons: Array<RateSeason>
+  room_rates: Array<RoomNightlyRate>
+  occupancy: RateOccupancy
+  day_of_week: RateDayOfWeek
+  length_of_stay: Array<RateLengthOfStay>
+  supplements: Array<RateSupplement>
+  rate_plans: Array<RatePlan>
 }
 
 /** Mirrors App\Support\Config\Documents\GuestsSettings. Update when the PHP class changes. */
@@ -180,6 +250,17 @@ export type CancellationBand = {
   penalty_pct: number
 }
 
+/** Mirrors App\Support\Config\Documents\Tax. Update when the PHP class changes. */
+export type TaxRule = {
+  code: string
+  label: string
+  basis: 'PER_STAY' | 'PER_NIGHT' | 'PER_PERSON_PER_NIGHT' | 'PCT_OF_ROOM'
+  amount: number
+  child_exempt_under_age: number | null
+  charged: boolean
+  shown_in_price_panel: boolean
+}
+
 /** Mirrors App\Support\Config\Documents\ConsentVersions. Update when the PHP class changes. */
 export type ConsentVersions = {
   terms: string
@@ -244,7 +325,10 @@ export type BusinessRulesDocument = {
   retention: RetentionRules
   cancellation: {
     bands: Array<CancellationBand>
+    charter_bands?: Array<CancellationBand>
+    sets?: Record<string, Array<CancellationBand>>
   }
+  taxes?: Array<TaxRule>
   legal: {
     consent_versions: ConsentVersions
   }
@@ -339,6 +423,60 @@ export type NoRate = {
   reason: string
 }
 
+/** One night on a stay quote. Mirrors App\Services\Pricing\NightLine. */
+export type StayNightLine = {
+  night: string
+  season: string
+  base: number
+  extras: number
+  single: number
+  dow: number
+  supplements: number
+  plan_adjust: number
+  total: number
+}
+
+/** Mirrors App\Services\Pricing\TaxLine. */
+export type StayTaxLine = {
+  code: string
+  label: string
+  amount: number
+  charged: boolean
+  shown_in_price_panel: boolean
+}
+
+/** Mirrors App\Services\Pricing\StayQuote::toArray. */
+export type StayQuote = {
+  night_lines: Array<StayNightLine>
+  lines: Array<QuoteLine>
+  total: number
+  deposit_pct: number
+  deposit: number
+  rates_version_id: number | null
+  terms: {
+    balance_days: number
+    charter: unknown
+    deposit_pct?: number
+    refundable?: boolean
+    cancellation_set?: string
+  }
+  tax_lines: Array<StayTaxLine>
+  total_including_charged_taxes: number
+}
+
+/** The stay a price-check scenario was priced for. */
+export type PriceCheckStay = {
+  room_type: string
+  check_in: string
+  check_out: string
+  nights: number
+  adults: number
+  child_ages: Array<number>
+  rate_plan: string
+}
+
+export type PriceCheckQuote = StayQuote | NoRate | { errors: Array<string> }
+
 /**
  * One price-check scenario. Mirrors the list items in
  * App\Http\Resources\Rms\PriceCheckResource. Update when the PHP resource changes.
@@ -346,8 +484,9 @@ export type NoRate = {
 export type PriceCheckRow = {
   key: string
   label: string
-  published: Quote | NoRate
-  draft: Quote | NoRate
+  input: PriceCheckStay
+  published: PriceCheckQuote
+  draft: PriceCheckQuote
   difference: number | null
 }
 
