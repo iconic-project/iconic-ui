@@ -191,6 +191,7 @@ export type {
 
 export type {
   CommercialMetrics,
+  HotelKpis,
   MetricDefinition,
   MetricScope,
   MetricWindow,

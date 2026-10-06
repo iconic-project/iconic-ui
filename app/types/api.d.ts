@@ -5663,6 +5663,10 @@ export interface components {
         ContactBookingResource: {
             id: number;
             display_reference: string | null;
+            check_in: string;
+            check_out: string;
+            nights: number;
+            room_type: string | null;
             departure_date: string;
             status: string;
             charges_total: number;
@@ -5888,6 +5892,11 @@ export interface components {
                 captured_at?: string;
             } | null;
             lifetime_value: number;
+            last_stay_check_out: string | null;
+            next_stay_check_in: string | null;
+            stays_count: number;
+            nights_count: number;
+            last_room_type: string | null;
             segment: components["schemas"]["ContactSegment"];
             lifecycle: string;
             nps: number | null;
@@ -6075,6 +6084,11 @@ export interface components {
             booking: {
                 reference: string;
                 status: string;
+                check_in: string;
+                check_out: string;
+                nights: number;
+                room_type: string | null;
+                property_name: string | null;
                 departure_date: string;
                 cabin: string | null;
                 charges_total: number;
@@ -6091,6 +6105,11 @@ export interface components {
                     [key: string]: unknown;
                 } | null;
             } | null;
+            searches: {
+                at: string;
+                name: string;
+                detail: string;
+            }[];
             contact_id: number;
         };
         /**
@@ -7193,6 +7212,32 @@ export interface components {
          * @enum {string}
          */
         MessageDirection: "IN" | "OUT";
+        /** HotelKpisResource */
+        HotelKpisResource: {
+            today: string;
+            pickup_days: number;
+            property: number | null;
+            room_type: number | null;
+            channel: string | null;
+            periods: {
+                key: "this_month" | "next_30" | "next_90";
+                from: string;
+                to: string;
+                kpis: {
+                    occupancy: string | null;
+                    adr: number | null;
+                    revpar: number | null;
+                    room_revenue: number;
+                    room_nights_sold: number;
+                    room_nights_available: number;
+                };
+                last_year: {
+                    occupancy: string | null;
+                    adr: number | null;
+                    revpar: number | null;
+                } | null;
+            }[];
+        };
         /** MetricsResource */
         MetricsResource: {
             window: {
