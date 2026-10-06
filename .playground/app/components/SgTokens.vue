@@ -1,5 +1,12 @@
 <script setup lang="ts">
-const COLOR_TOKENS: Array<string> = [
+const props = withDefaults(defineProps<{
+  title?: string
+  theme?: string
+}>(), {
+  title: 'Colour tokens',
+})
+
+const BASE_TOKENS: Array<string> = [
   '--bg-canvas',
   '--bg-surface',
   '--bg-surface-alt',
@@ -9,12 +16,33 @@ const COLOR_TOKENS: Array<string> = [
   '--fg-subtle',
   '--fg-brand',
   '--hilo-blue-500',
+  '--border',
   '--border-subtle',
   '--border-default',
   '--success-500',
   '--warning-700',
   '--danger-500',
 ]
+
+const STAFF_TOKENS: Array<string> = [
+  '--primary',
+  '--warm',
+  '--bg',
+  '--surface',
+  '--nav-bg',
+  '--success',
+  '--warning',
+  '--danger',
+  '--note-bg',
+]
+
+const colorTokens = computed(() => {
+  if (props.theme === 'staff') {
+    return [...STAFF_TOKENS, ...BASE_TOKENS]
+  }
+
+  return BASE_TOKENS
+})
 
 const EASE_TOKENS: Array<string> = [
   '--ease',
@@ -34,7 +62,7 @@ function readTokens(): void {
   const styles = getComputedStyle(root.value)
   const next: Record<string, string> = {}
 
-  for (const name of [...COLOR_TOKENS, ...EASE_TOKENS]) {
+  for (const name of [...colorTokens.value, ...EASE_TOKENS]) {
     next[name] = styles.getPropertyValue(name).trim()
   }
 
@@ -53,13 +81,17 @@ watch(() => colorMode.value, async () => {
 </script>
 
 <template>
-  <section ref="root" class="sg-section">
+  <section
+    ref="root"
+    class="sg-section"
+    :data-theme="theme"
+  >
     <AnkLabel class="sg-section__title">
-      Colour tokens
+      {{ title }}
     </AnkLabel>
     <div class="sg-grid">
       <div
-        v-for="token in COLOR_TOKENS"
+        v-for="token in colorTokens"
         :key="token"
         class="sg-swatch"
       >

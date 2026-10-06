@@ -217,7 +217,7 @@ export default defineAppConfig({
 
     table: {
       slots: {
-        root: 'rounded-md overflow-hidden ring ring-inset ring-(--border-subtle)',
+        root: 'rounded-md overflow-hidden ring ring-inset ring-(--border)',
         th: 'px-5 py-3 text-start font-sans font-normal text-[11px] tracking-[0.06em] uppercase text-(--fg-subtle) bg-(--bg-surface-alt) border-b border-(--border-subtle)',
         td: 'px-5 py-3 text-[14px] text-default whitespace-normal border-b border-(--border-subtle)',
         tbody: '[&>tr]:hover:bg-(--bg-surface-alt)',
@@ -243,7 +243,7 @@ export default defineAppConfig({
 
     modal: {
       slots: {
-        content: 'rounded-xl shadow-[var(--shadow-lg)] bg-(--bg-surface) ring ring-(--border-subtle)',
+        content: 'rounded-xl shadow-[var(--shadow-lg)] bg-(--bg-surface) ring ring-(--border)',
         header: 'p-0 mb-6 min-h-0',
         body: 'p-0',
         footer: 'p-0 pt-4',
@@ -305,7 +305,7 @@ export default defineAppConfig({
       variants: {
         variant: {
           outline: {
-            root: 'bg-(--bg-surface) ring ring-(--border-subtle) divide-(--border-subtle)',
+            root: 'bg-(--bg-surface) ring ring-(--border) divide-(--border-subtle)',
           },
         },
       },

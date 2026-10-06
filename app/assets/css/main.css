@@ -127,6 +127,7 @@
   --fg-subtle: var(--neutral-500);
   --fg-disabled: var(--neutral-400);
   --fg-brand: var(--hilo-blue-600);
+  --border: var(--neutral-200);
   --border-subtle: var(--neutral-200);
   --border-default: var(--neutral-300);
 
@@ -181,7 +182,7 @@
   --iv38: var(--fg-subtle);
   --sand: var(--fg-brand);
   --olive: var(--neutral-600);
-  --hair: var(--border-subtle);
+  --hair: var(--border);
   --ok: var(--success-700);
   --warn: var(--warning-700);
 
@@ -296,15 +297,265 @@
 }
 
 .portal-scroll:has(table.list) {
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border);
   border-radius: var(--ui-radius);
   background: var(--bg-surface);
 }
 
 table.list:not(.panel table):not(.portal-scroll table):not(.ank-panel table):not(.matrix-scroll table):not(.rates-scroll table) {
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border);
   border-radius: var(--ui-radius);
   border-collapse: separate;
   border-spacing: 0;
   overflow: hidden;
+}
+
+/*
+  Staff theme for the panel and the portal.
+  The booking engine leaves this attribute off and keeps the HILO tokens above.
+  Set data-theme="staff" on the document, or on a subtree in the style guide.
+*/
+[data-theme="staff"] {
+  --primary: #3D4BE0;
+  --primary-hover: #2A36B8;
+  --primary-soft: #E6E9FD;
+  --primary-ink: #1E2780;
+  --warm: #E8763A;
+  --warm-soft: #FDE6D3;
+  --warm-ink: #B4521E;
+
+  --bg: #F4EFE8;
+  --surface: #FFFDF9;
+  --surface-sunken: #F8F3EC;
+  --surface-muted: #F3EDE4;
+  --surface-hover: #FBF6EF;
+
+  --border: #E8E0D4;
+  --border-subtle: #F1EBE2;
+  --border-strong: #CDD2EA;
+
+  --text: #221D1A;
+  --text-body: #3A322C;
+  --text-muted: #7A6F64;
+  --text-faint: #B9AEA1;
+  --text-on-primary: #FFFFFF;
+
+  --nav-bg: #171B36;
+  --nav-hover: #2A2F52;
+  --nav-text: #D4CFC8;
+  --nav-section: #8E877F;
+
+  --success: #2E9A63;
+  --success-soft: #E2F2EA;
+  --success-ink: #1C6B45;
+
+  --warning: #E39B1B;
+  --warning-soft: #FCEBC9;
+  --warning-ink: #87540A;
+
+  --danger: #D2462B;
+  --danger-soft: #FBE1DA;
+  --danger-ink: #A3301C;
+
+  --note-bg: #FDF1E3;
+  --note-border: #F3D7B6;
+  --note-ink: #6B3E12;
+
+  --hilo-blue-50: var(--primary-soft);
+  --hilo-blue-100: var(--primary-soft);
+  --hilo-blue-200: color-mix(in srgb, var(--primary) 28%, white);
+  --hilo-blue-300: color-mix(in srgb, var(--primary) 48%, white);
+  --hilo-blue-400: color-mix(in srgb, var(--primary) 72%, white);
+  --hilo-blue-500: var(--primary);
+  --hilo-blue-600: var(--primary-hover);
+  --hilo-blue-700: var(--primary-hover);
+  --hilo-blue-800: var(--primary-ink);
+  --hilo-blue-900: var(--primary-ink);
+  --hilo-blue-950: var(--primary-ink);
+  --hilo-blue: var(--primary);
+
+  --color-hilo-50: var(--primary-soft);
+  --color-hilo-100: var(--primary-soft);
+  --color-hilo-200: var(--hilo-blue-200);
+  --color-hilo-300: var(--hilo-blue-300);
+  --color-hilo-400: var(--hilo-blue-400);
+  --color-hilo-500: var(--primary);
+  --color-hilo-600: var(--primary-hover);
+  --color-hilo-700: var(--primary-hover);
+  --color-hilo-800: var(--primary-ink);
+  --color-hilo-900: var(--primary-ink);
+  --color-hilo-950: var(--primary-ink);
+
+  --color-gain-50: var(--success-soft);
+  --color-gain-500: var(--success);
+  --color-gain-600: var(--success);
+  --color-gain-700: var(--success-ink);
+  --color-caution-50: var(--warning-soft);
+  --color-caution-500: var(--warning);
+  --color-caution-700: var(--warning-ink);
+  --color-alert-50: var(--danger-soft);
+  --color-alert-500: var(--danger);
+  --color-alert-600: var(--danger);
+  --color-alert-700: var(--danger-ink);
+
+  --success-50: var(--success-soft);
+  --success-500: var(--success);
+  --success-700: var(--success-ink);
+  --warning-50: var(--warning-soft);
+  --warning-500: var(--warning);
+  --warning-700: var(--warning-ink);
+  --danger-50: var(--danger-soft);
+  --danger-500: var(--danger);
+  --danger-700: var(--danger-ink);
+
+  --bg-canvas: var(--bg);
+  --bg-surface: var(--surface);
+  --bg-surface-alt: var(--surface-sunken);
+  --bg-surface-sunk: var(--surface-muted);
+  --fg-default: var(--text);
+  --fg-muted: var(--text-body);
+  --fg-subtle: var(--text-muted);
+  --fg-disabled: var(--text-faint);
+  --fg-brand: var(--primary-ink);
+  --border-default: var(--border-strong);
+
+  --shadow-xs: 0 1px 2px rgba(34, 29, 26, 0.05);
+  --shadow-sm: 0 1px 3px rgba(34, 29, 26, 0.06), 0 1px 2px rgba(34, 29, 26, 0.04);
+  --shadow-md: 0 4px 12px rgba(34, 29, 26, 0.06), 0 2px 4px rgba(34, 29, 26, 0.04);
+  --shadow-lg: 0 12px 32px rgba(34, 29, 26, 0.08), 0 4px 8px rgba(34, 29, 26, 0.04);
+
+  --forest: var(--surface);
+  --forest-950: var(--bg);
+  --forest-900: var(--surface);
+  --forest-700: var(--surface-hover);
+  --forest-600: var(--surface-muted);
+  --coral: var(--primary);
+  --coral-600: var(--primary-hover);
+  --coral-400: var(--primary);
+  --ivory: var(--text);
+  --iv62: var(--text-body);
+  --iv38: var(--text-muted);
+  --sand: var(--fg-brand);
+  --olive: var(--text-muted);
+  --hair: var(--border);
+  --ok: var(--success-ink);
+  --warn: var(--warning-ink);
+
+  --ui-bg: var(--bg);
+  --ui-bg-muted: var(--surface-muted);
+  --ui-bg-elevated: var(--surface);
+  --ui-bg-accented: var(--surface-sunken);
+  --ui-bg-inverted: var(--nav-bg);
+  --ui-text: var(--text);
+  --ui-text-highlighted: var(--text);
+  --ui-text-toned: var(--text-body);
+  --ui-text-muted: var(--text-muted);
+  --ui-text-dimmed: var(--text-faint);
+  --ui-text-inverted: var(--text-on-primary);
+  --ui-border: var(--border);
+  --ui-border-muted: var(--border-subtle);
+  --ui-border-accented: var(--border-strong);
+  --ui-primary: var(--primary);
+  --ui-success: var(--success);
+  --ui-warning: var(--warning);
+  --ui-info: var(--primary);
+  --ui-error: var(--danger);
+}
+
+/* Dark staff surfaces stay in the same navy and warm ink. Accents stay the light-theme tokens. */
+html.dark[data-theme="staff"],
+.dark [data-theme="staff"] {
+  --bg: #12141F;
+  --surface: #1C2033;
+  --surface-sunken: #171B36;
+  --surface-muted: #242842;
+  --surface-hover: #2A2F52;
+  --border: #3A4060;
+  --border-subtle: #2C3150;
+  --border-strong: #5C6494;
+  --text: #F4EFE8;
+  --text-body: #D4CFC8;
+  --text-muted: #8E877F;
+  --text-faint: #6E675F;
+  --nav-bg: #101322;
+  --fg-brand: var(--primary);
+  --primary-soft: color-mix(in srgb, var(--primary) 22%, var(--surface));
+  --success-soft: color-mix(in srgb, var(--success) 22%, var(--surface));
+  --warning-soft: color-mix(in srgb, var(--warning) 22%, var(--surface));
+  --danger-soft: color-mix(in srgb, var(--danger) 22%, var(--surface));
+  --note-bg: #2A2118;
+  --note-border: #6B3E12;
+  --note-ink: #F3D7B6;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55), 0 4px 8px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="staff"] .notice {
+  background: var(--note-bg);
+  border: 1px solid var(--note-border);
+  color: var(--note-ink);
+}
+
+[data-theme="staff"] .ank-kpi__label {
+  color: var(--text-muted);
+}
+
+[data-theme="staff"] .panel h3 {
+  color: var(--text);
+}
+
+[data-theme="staff"] .sg-d2c {
+  background: var(--success-soft);
+  color: var(--success-ink);
+}
+
+[data-theme="staff"] .sg-b2b,
+[data-theme="staff"] .sg-ch {
+  background: var(--primary-soft);
+  color: var(--primary-ink);
+}
+
+[data-theme="staff"] .ank-kpi:has(.pay-kpi-coral) {
+  background: var(--danger-soft);
+}
+
+[data-theme="staff"] .ank-kpi:has(.pay-kpi-warn) {
+  background: var(--warning-soft);
+}
+
+[data-theme="staff"] .pay-kpi-warn {
+  color: var(--warning-ink);
+}
+
+[data-theme="staff"] .p-conf,
+[data-theme="staff"] .p-full,
+[data-theme="staff"] .pill.ok {
+  background: var(--success-soft);
+  border-color: transparent;
+  color: var(--success-ink);
+}
+
+[data-theme="staff"] .p-pend,
+[data-theme="staff"] .p-hold,
+[data-theme="staff"] .pill.mid {
+  background: var(--warning-soft);
+  border-color: transparent;
+  color: var(--warning-ink);
+}
+
+[data-theme="staff"] .p-over,
+[data-theme="staff"] .p-canc,
+[data-theme="staff"] .pill.bad,
+[data-theme="staff"] .pay-kpi-coral,
+[data-theme="staff"] .pay-amt-refund {
+  background: var(--danger-soft);
+  border-color: transparent;
+  color: var(--danger-ink);
+}
+
+[data-theme="staff"] .pay-kpi-coral,
+[data-theme="staff"] .pay-amt-refund {
+  background: transparent;
 }

@@ -6,6 +6,10 @@
     </header>
     <main class="sg-main">
       <SgTokens />
+      <SgTokens
+        title="Staff theme"
+        theme="staff"
+      />
       <SgType />
       <SgDates />
       <SgAnk />
