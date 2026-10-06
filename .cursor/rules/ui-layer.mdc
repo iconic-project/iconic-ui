@@ -10,7 +10,7 @@ This repo is a **Nuxt layer** extended by iconic-panel (RMS + CRM) and iconic-en
 - the design tokens (`app/assets/css/main.css`) — the HILO brand book scale: `--hilo-blue-*`, `--neutral-*`, `--bg-*`, `--fg-*`, `--border-*`, `--radius-*`, `--shadow-*`. Legacy names (`--forest*`, `--coral*`, `--ivory`, `--iv62`, `--iv38`, `--hair`, `--sand`, `--olive`, `--ok`, `--warn`) alias those tokens. Easing: `--ease`, `--eo`, `--eio`
 - the mapping of those tokens onto Nuxt UI's variables (`--ui-bg*`, `--ui-text*`, `--ui-border*`, `--ui-primary`, `--ui-radius: 8px`)
 - the Nuxt UI component overrides (`app.config.ts`) — cards at 16px, controls at 8px, hairline borders, brand shadows. The engine only increases button padding
-- Satoshi from Fontshare, weights 300, 400, 500, 700, and 900. Loaded by the stylesheet in `nuxt.config.ts` and by the `@nuxt/fonts` family entry
+- Satoshi from Fontshare, weights 300, 400, 500, 700, and 900. Loaded by the stylesheet in `nuxt.config.ts`. The `@nuxt/fonts` entry sets Satoshi to `provider: 'none'` so the build does not download it
 - colour mode: **light is the default**. Dark uses the brand book's dark tokens
 - shared components, prefixed **`Ank`** (`AnkLabel`, `AnkPill`, `AnkPanel`, `AnkKpi`, `AnkMoney`, `AnkThemeToggle`…)
 - composables: `useApi()`, `useMoney()`, `useDates()`

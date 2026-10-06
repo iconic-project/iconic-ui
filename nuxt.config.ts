@@ -29,8 +29,11 @@ export default defineNuxtConfig({
     },
   },
   fonts: {
+    // The stylesheet above loads Satoshi. Resolving it here makes the build
+    // download the file to measure fallbacks, and that fetch times out on Netlify.
+    processCSSVariables: false,
     families: [
-      { name: 'Satoshi', provider: 'fontshare', weights: [300, 400, 500, 700, 900] },
+      { name: 'Satoshi', provider: 'none' },
     ],
   },
   i18n: {
