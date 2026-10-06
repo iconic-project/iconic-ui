@@ -410,7 +410,15 @@ export type {
   PortalRequestCreated,
   PortalRequestInput,
   PortalResetInput,
+  PortalSeason,
   PortalSession,
+  PortalStayAvailability,
+  PortalStayBooking,
+  PortalStayCalendar,
+  PortalStayCommission,
+  PortalStayRates,
+  PortalStayRequestInput,
+  PortalStayRoomType,
 } from './portal'
 
 export type {
@@ -448,6 +456,7 @@ export type {
   EngineLabelCode,
   EngineLabelTone,
   GenerateSeasonResult,
+  ContentCompleteness,
   HoldType,
   InternalBlock,
   Itinerary,
@@ -457,6 +466,10 @@ export type {
   ItineraryListItem,
   ItineraryPair,
   ItineraryStatus,
+  PropertyContent,
+  RoomRow,
+  RoomTypeContent,
+  RoomTypePhoto,
   WaitlistNotice,
   Yacht,
 } from './inventory'

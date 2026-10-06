@@ -4,7 +4,6 @@
  */
 
 import type { components, operations } from './api'
-import type { CabinCategory } from './inventory'
 import type { CancellationBandLabel, PaymentLink, RefundStatus } from './payments'
 
 export type BookingStatus = components['schemas']['BookingStatus'] | 'IN_HOUSE' | 'CHECKED_OUT' | 'NO_SHOW'
@@ -266,9 +265,17 @@ export type HoldListItem = Omit<
 
 export type WaitlistEntry = Omit<
   components['schemas']['WaitlistEntryResource'],
-  'cabin_category'
+  'cabin_category' | 'cabin_type' | 'cabin_available' | 'departure'
 > & {
-  cabin_category: CabinCategory
+  stay: {
+    check_in: string
+    check_out: string
+    room_type: {
+      code: string
+      name: string
+    }
+  }
+  room_available: boolean
 }
 
 export type RequestQueueRules = operations['request.index']['responses'][200]['content']['application/json']['meta']['rules']

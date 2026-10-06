@@ -26,6 +26,7 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
+const { format: formatMoney } = useMoney()
 const { format, nightsBetween, eachNight, formatStay } = useDates()
 
 const message = ref<string | null>(null)
@@ -236,6 +237,16 @@ function dayMark(day: { toString(): string }): NightMark {
   return /^\d{4}-\d{2}-\d{2}$/.test(iso) ? mark(iso) : {}
 }
 
+function dayPrice(day: { toString(): string }): string | null {
+  const price = dayMark(day).price
+
+  if (price === undefined) {
+    return null
+  }
+
+  return formatMoney(price)
+}
+
 watch(() => model.value, (value) => {
   if (!value) {
     return
@@ -288,7 +299,7 @@ watch(() => model.value, (value) => {
           class="ank-stay__day"
           :data-closed-arrival="dayMark(day).closedToArrival ? '' : undefined"
           :data-closed-departure="dayMark(day).closedToDeparture ? '' : undefined"
-        >{{ day.day }}</span>
+        >{{ day.day }}<small v-if="dayPrice(day)" class="ank-stay__price">{{ dayPrice(day) }}</small></span>
       </template>
     </UCalendar>
   </div>
@@ -330,6 +341,20 @@ watch(() => model.value, (value) => {
   border-radius: var(--radius-xl);
   background: var(--bg-surface);
   box-shadow: var(--shadow-xs);
+}
+
+.ank-stay__day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.ank-stay__price {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--fg-muted);
 }
 
 .ank-stay__day[data-closed-arrival],

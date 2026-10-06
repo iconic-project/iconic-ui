@@ -321,3 +321,38 @@ export type WaitlistNotice = Pick<
   components['schemas']['WaitlistEntryResource'],
   'auto_notified' | 'position' | 'notified'
 >
+
+/** Mirrors App\Support\Content\Completeness. */
+export type ContentCompleteness = {
+  pct: number
+  missing: Array<string>
+  blocking: Array<string>
+}
+
+/**
+ * Mirrors App\Http\Resources\Rms\PropertyResource after the content fields.
+ * Generated PropertyResource lags the PHP resource until `pnpm types:api`.
+ */
+export type PropertyContent = components['schemas']['PropertyResource'] & {
+  hero_image_url: string | null
+  completeness: ContentCompleteness
+}
+
+/** Mirrors a room type photo on RoomTypeResource. */
+export type RoomTypePhoto = {
+  path: string
+  alt: string | null
+  url: string | null
+}
+
+/**
+ * Mirrors App\Http\Resources\Rms\RoomTypeResource after the content fields.
+ */
+export type RoomTypeContent = Omit<components['schemas']['RoomTypeResource'], 'photos'> & {
+  photos: Array<RoomTypePhoto> | null
+  completeness: ContentCompleteness
+  engine_visible: boolean
+}
+
+/** Mirrors App\Http\Resources\Rms\RoomResource. */
+export type RoomRow = components['schemas']['RoomResource']

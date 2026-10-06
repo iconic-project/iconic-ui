@@ -301,9 +301,10 @@ export type PriceChangedError = {
 
 export type EngineEventsAccepted = components['schemas']['EngineEventsAcceptedResource']
 
-export type EngineEventName = NonNullable<
-  components['schemas']['StoreEngineEventsRequest']['events'][number]['name']
->
+export type EngineEventName =
+  | NonNullable<components['schemas']['StoreEngineEventsRequest']['events'][number]['name']>
+  | 'search_performed'
+  | 'room_type_viewed'
 
 /**
  * Mirrors App\Support\Engine\BehaviouralEventParams whitelist keys.
@@ -319,6 +320,12 @@ export type EngineEventParams = {
   value?: number
   coupon_code?: string
   page_path?: string
+  check_in?: string
+  check_out?: string
+  adults?: number
+  children?: number
+  rooms?: number
+  room_type?: string
 }
 
 /**
