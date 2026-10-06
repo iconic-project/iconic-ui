@@ -118,7 +118,7 @@
   --danger-500: #D7332E;
   --danger-700: #8A1A17;
 
-  --bg-canvas: var(--neutral-25);
+  --bg-canvas: #E9ECF6;
   --bg-surface: var(--neutral-0);
   --bg-surface-alt: var(--neutral-50);
   --bg-surface-sunk: var(--neutral-100);
@@ -195,7 +195,7 @@
   --ui-text-toned: var(--fg-muted);
   --ui-text-muted: var(--fg-muted);
   --ui-text-dimmed: var(--fg-subtle);
-  --ui-text-inverted: var(--bg-canvas);
+  --ui-text-inverted: var(--neutral-0);
   --ui-border: var(--border-subtle);
   --ui-border-muted: var(--border-subtle);
   --ui-border-accented: var(--border-default);
