@@ -280,3 +280,31 @@
   outline: 2px solid var(--hilo-blue-500);
   outline-offset: 2px;
 }
+
+/* Cards, notices and alerts use the same 8px radius as buttons and list tables. */
+.panel,
+.notice,
+.warnbox,
+.esbar,
+.drbar,
+.gcard {
+  border-radius: var(--ui-radius);
+}
+
+.panel:has(table.list) {
+  overflow: hidden;
+}
+
+.portal-scroll:has(table.list) {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--ui-radius);
+  background: var(--bg-surface);
+}
+
+table.list:not(.panel table):not(.portal-scroll table):not(.ank-panel table):not(.matrix-scroll table):not(.rates-scroll table) {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--ui-radius);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}

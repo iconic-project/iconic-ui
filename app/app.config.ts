@@ -217,7 +217,7 @@ export default defineAppConfig({
 
     table: {
       slots: {
-        root: 'rounded-xl overflow-hidden',
+        root: 'rounded-md overflow-hidden ring ring-inset ring-(--border-subtle)',
         th: 'px-5 py-3 text-start font-sans font-normal text-[11px] tracking-[0.06em] uppercase text-(--fg-subtle) bg-(--bg-surface-alt) border-b border-(--border-subtle)',
         td: 'px-5 py-3 text-[14px] text-default whitespace-normal border-b border-(--border-subtle)',
         tbody: '[&>tr]:hover:bg-(--bg-surface-alt)',
@@ -296,7 +296,7 @@ export default defineAppConfig({
 
     card: {
       slots: {
-        root: 'rounded-xl shadow-[var(--shadow-xs)]',
+        root: 'rounded-md shadow-[var(--shadow-xs)]',
         header: 'px-6 py-5',
         title: 'font-sans font-normal text-[22px] tracking-normal text-(--fg-default)',
         body: 'p-6',

@@ -25,7 +25,7 @@ defineProps<{
 .ank-kpi {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
+  border-radius: var(--ui-radius);
   box-shadow: var(--shadow-xs);
   padding: 20px 24px;
 }

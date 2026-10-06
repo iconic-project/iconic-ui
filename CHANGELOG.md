@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- List tables use the same 8px radius as buttons. Staff panels that contain a `table.list`, portal list scrolls, and standalone list tables pick it up from the layer. `UTable` uses that radius too.
+- Notices, alerts, publish bars, date-range bars, guest cards and every `.panel` use that same radius.
+- Section cards, KPI cards, Nuxt UI cards and the booking-engine card frames use 8px as well. The 16px card radius is no longer used.
+
 ## v0.18.0
 
 - Breaking: departure, cabin, itinerary, yacht, and manifest aliases are removed. Hotel aliases are property, room, room type, and stay.

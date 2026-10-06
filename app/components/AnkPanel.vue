@@ -28,7 +28,7 @@ const hasHeader = computed(() => Boolean(props.title || slots.actions))
 .ank-panel {
   border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
-  border-radius: var(--radius-xl);
+  border-radius: var(--ui-radius);
   box-shadow: var(--shadow-xs);
   margin-bottom: 24px;
   overflow: hidden;

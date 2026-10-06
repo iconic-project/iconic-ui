@@ -338,7 +338,7 @@ watch(() => model.value, (value) => {
   max-width: 100%;
   padding: 8px;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
+  border-radius: var(--ui-radius);
   background: var(--bg-surface);
   box-shadow: var(--shadow-xs);
 }
