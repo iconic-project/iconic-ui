@@ -13,6 +13,7 @@
     "typecheck": "nuxt typecheck .playground",
     "test": "vitest run",
     "types:api": "bash scripts/types-api.sh",
+    "types:check": "bash scripts/types-check.sh",
     "postinstall": "nuxt prepare .playground"
   },
   "devDependencies": {

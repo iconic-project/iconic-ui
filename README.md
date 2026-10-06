@@ -40,7 +40,10 @@ Regenerate after every API change the apps consume, and before starting the fron
 
 ```bash
 pnpm types:api
+pnpm types:check
 ```
+
+`types:check` fails when `app/types/api.d.ts` differs from a fresh generation of the same URL.
 
 The script reads `${API_OPENAPI_URL:-http://localhost:8000/docs/api.json}` (API must be running). Convenient aliases live in `app/types/index.ts`. Hotel inventory is `Property`, `Room`, `RoomType`, and the night calendar. A stay is check-in and check-out. v0.18.0 removed the departure, cabin, itinerary, and manifest aliases. Engine aliases come only from `/api/engine` schemas. CRM aliases come only from `/api/crm` schemas. Privacy aliases come only from `/api/privacy` schemas.
 
