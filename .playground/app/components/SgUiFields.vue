@@ -52,16 +52,16 @@ const dateValue = ref<string | null>('2027-11-14')
     </div>
 
     <div class="sg-stack" style="margin-top: 20px; max-width: 360px">
-      <UFormField label="Yacht">
+      <UFormField label="Property">
         <USelect v-model="selectValue" :items="yachtOptions" />
       </UFormField>
-      <UFormField label="Itinerary">
+      <UFormField label="Room type">
         <USelectMenu v-model="selectMenuValue" :items="yachtOptions" />
       </UFormField>
       <UFormField label="Internal notes">
         <UTextarea v-model="textareaValue" :rows="2" />
       </UFormField>
-      <UFormField label="Departure date">
+      <UFormField label="Check-in">
         <AnkDateInput v-model="dateValue" />
       </UFormField>
     </div>

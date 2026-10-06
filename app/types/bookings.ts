@@ -9,7 +9,8 @@ import type { CancellationBandLabel, PaymentLink, RefundStatus } from './payment
 export type BookingStatus = components['schemas']['BookingStatus'] | 'IN_HOUSE' | 'CHECKED_OUT' | 'NO_SHOW'
 
 export type DeskAction = 'check_in' | 'check_out' | 'no_show' | 'modify_stay' | 'move_room'
-export type BookingType = components['schemas']['BookingType']
+/** Scramble types BookingResource.type as string. Matches App\Enums\BookingType. */
+export type BookingType = 'ROOM' | 'CHARTER'
 export type BookingSegment = components['schemas']['BookingSegment']
 export type MainChannel = components['schemas']['MainChannel']
 export type ChannelOfOrigin = components['schemas']['ChannelOfOrigin']
@@ -169,34 +170,11 @@ export type BookingFormOptions = components['schemas']['BookingFormOptionsResour
   }>
 }
 
-/**
- * Mirrors App\Http\Resources\Rms\ReservationQuoteResource.
- * Generated cabins is unknown[] and total / deposit freeze as 0 | null.
- * terms comes through from the generated schema.
- */
+/** Mirrors the stay quote returned by the reservation quote endpoint. */
 export type BookingQuote = {
-  departure_id: number
-  type: BookingType
-  back_to_back: boolean
-  cabins: Array<{
-    cabin_code: string | null
-    cabin_label: string
-    adults: number
-    children: number
-    available: boolean
-    quote: {
-      lines: Array<PriceLine>
-      total: number
-      deposit_pct: number
-      deposit: number
-    } | null
-    errors: Array<string>
-    warnings: Array<string>
-  }>
   total: number | null
   deposit: number | null
   warnings: Array<string>
-  terms: components['schemas']['ReservationQuoteResource']['terms']
 }
 
 type CreatedBody = operations['booking.store']['responses'][201]['content']['application/json']
@@ -227,7 +205,7 @@ export type BookingAuditRow = Omit<
  */
 export type RequestQueueItem = Omit<
   components['schemas']['BookingRequestResource'],
-  'can_act' | 'party' | 'contact' | 'hold' | 'sla' | 'departure' | 'cabin_label'
+  'can_act' | 'party' | 'contact' | 'hold' | 'sla'
 > & {
   can_act: boolean
   party: string
@@ -263,20 +241,7 @@ export type HoldListItem = Omit<
   booking_id: number | null
 }
 
-export type WaitlistEntry = Omit<
-  components['schemas']['WaitlistEntryResource'],
-  'cabin_category' | 'cabin_type' | 'cabin_available' | 'departure'
-> & {
-  stay: {
-    check_in: string
-    check_out: string
-    room_type: {
-      code: string
-      name: string
-    }
-  }
-  room_available: boolean
-}
+export type WaitlistEntry = components['schemas']['WaitlistEntryResource']
 
 export type RequestQueueRules = operations['request.index']['responses'][200]['content']['application/json']['meta']['rules']
 

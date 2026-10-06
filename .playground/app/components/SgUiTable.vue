@@ -2,21 +2,21 @@
 type BookingRow = {
   ref: string
   guest: string
-  departure: string
+  checkIn: string
   status: string
 }
 
 const columns: Array<{ accessorKey: keyof BookingRow, header: string }> = [
   { accessorKey: 'ref', header: 'Ref' },
   { accessorKey: 'guest', header: 'Guest' },
-  { accessorKey: 'departure', header: 'Departure' },
+  { accessorKey: 'checkIn', header: 'Check-in' },
   { accessorKey: 'status', header: 'Status' },
 ]
 
 const rows: Array<BookingRow> = [
-  { ref: 'ANK-2026-0005', guest: 'Alvear', departure: '14 Nov 2027', status: 'CONFIRMED' },
-  { ref: 'ANK-2026-0006', guest: 'Meridian', departure: '21 Nov 2027', status: 'HOLD' },
-  { ref: 'ANK-2026-0007', guest: 'Virtuoso', departure: '28 Nov 2027', status: 'PENDING' },
+  { ref: 'ANK-2026-0005', guest: 'Alvear', checkIn: '14 Nov 2027', status: 'CONFIRMED' },
+  { ref: 'ANK-2026-0006', guest: 'Meridian', checkIn: '21 Nov 2027', status: 'HOLD' },
+  { ref: 'ANK-2026-0007', guest: 'Virtuoso', checkIn: '28 Nov 2027', status: 'PENDING' },
 ]
 </script>
 

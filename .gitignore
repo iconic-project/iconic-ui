@@ -21,3 +21,4 @@ dist
 
 # JetBrains/WebStorm
 .idea/
+.pnpm-store/

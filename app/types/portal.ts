@@ -11,7 +11,7 @@ import type { components } from './api'
 
 export type PortalSession = components['schemas']['PortalMeResource']
 export type PortalAgency = components['schemas']['PortalAgencyMeResource']
-export type PortalNetRates = components['schemas']['PortalNetRateResource']
+export type PortalNetRates = components['schemas']['PortalStayRatesResource']
 export type PortalAvailabilityRow = components['schemas']['PortalAvailabilityResource']
 export type PortalBooking = components['schemas']['PortalBookingResource']
 export type PortalCommission = components['schemas']['PortalCommissionResource']

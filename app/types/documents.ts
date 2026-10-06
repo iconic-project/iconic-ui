@@ -59,8 +59,3 @@ export type Delivery = Omit<
   kind: DeliveryKind
   status: DeliveryStatus
 }
-
-export type ManifestRow = components['schemas']['ManifestDepartureResource']
-export type ManifestVersion = components['schemas']['ManifestVersionResource']
-export type ManifestKind = components['schemas']['ManifestKind']
-export type ManifestIssued = components['schemas']['ManifestIssuedResource']

@@ -6,80 +6,24 @@
 
 import type { components } from './api'
 
-export type EngineFeed = Omit<
-  components['schemas']['FeedResource'],
-  'itineraries' | 'departures' | 'rates' | 'settings' | 'offers'
-> & {
-  itineraries: Array<EngineItinerary>
-  departures: Array<EngineDeparture>
-  rates: EngineRates
-  settings: EngineSettings
-  offers: Array<EngineOffer>
-}
-
-export type EngineItinerary = Omit<
-  components['schemas']['EngineItineraryResource'],
-  'card'
-> & {
-  card: Omit<components['schemas']['EngineItineraryResource']['card'], 'hero_image'> & {
-    hero_image: string | null
-  }
-}
-
 /**
- * Mirrors App\Http\Resources\Engine\EngineDepartureResource.
- * Generated id / festive / counts / waitlist / offers freeze as string.
- */
-export type EngineDeparture = {
-  id: number
-  itinerary: string
-  yacht: string
-  embark: string
-  disembark: string
-  festive: boolean
-  rate_year: number
-  status: string
-  suites_free: number
-  owner_free: boolean
-  label: string
-  urgency_threshold: number
-  waitlist: boolean
-  note: string | null
-  offers: Array<string>
-}
-
-/**
- * Mirrors App\Enums\OfferType. Public feed offers use the same
- * values; COMM never appears on /api/engine.
+ * Mirrors App\Enums\OfferType. Public offers use the same values.
  */
 export type EngineOfferType = 'CREDIT' | 'AMT' | 'PCT' | 'VALUE' | 'COMM'
 
-export type EngineOffer = Omit<components['schemas']['EngineOfferResource'], 'type'> & {
+export type EngineOffer = {
+  code: string
+  name: string
   type: EngineOfferType
-}
-
-/**
- * Mirrors App\Http\Resources\Engine\EngineRatesResource.
- * Generated year maps and years freeze as string.
- */
-export type EngineRates = {
-  currency: string
-  years: Array<number>
-  suite_pp_double: Record<string, number>
-  owner_pp_double: Record<string, number>
-  charter_week: Record<string, number>
-  terms: components['schemas']['EngineRatesResource']['terms']
-  rules: components['schemas']['EngineRatesResource']['rules']
+  value: number
 }
 
 /**
  * Mirrors App\Http\Resources\Engine\EngineSettingsResource.
- * Generated guests / locale / copy / fees freeze as string.
  */
 export type EngineSettings = {
   guests: {
-    max_per_cabin: number
-    max_per_yacht: number
+    max_per_property: number
     child_min_age: number
     child_max_age: number
     adult_required_with_children: boolean
@@ -101,6 +45,8 @@ export type EngineSettings = {
       privacy: string
       insurance: string
       marketing: string
+      analytics?: string
+      checkout_marketing?: string
     }
   }
   calendar: {
@@ -126,64 +72,14 @@ export type EngineSettings = {
     online_deposit_perk: string
   }
   fees: {
-    tct_pp: number
-    png: {
-      foreign_over_12: number
-      foreign_12_and_under: number
-      can_adult: number
-      can_minor: number
-      national_or_resident: number
-      exempt_under_age: number
-    }
     show_in_price_panel: boolean
     footnote: string
   }
 }
 
-export type EngineCabin = components['schemas']['DepartureCabinResource']
 export type PromoCheck = components['schemas']['PromoCheckResource']
 
-export type EnginePriceLine = {
-  code: string
-  label: string
-  amount: number
-}
-
-/**
- * Mirrors App\Http\Resources\Engine\EngineQuoteResource.
- * Generated cabins is unknown[] and total / deposit freeze as 0 | null.
- */
-export type EngineQuote = {
-  departure_id: number
-  type: string
-  back_to_back: boolean
-  cabins: Array<{
-    cabin_code: string | null
-    cabin_label: string
-    adults: number
-    children: number
-    available: boolean
-    quote: {
-      lines: Array<EnginePriceLine>
-      total: number
-      deposit_pct: number
-      deposit: number
-    } | null
-    errors: Array<string>
-    warnings: Array<string>
-  }>
-  total: number | null
-  deposit: number | null
-  warnings: Array<string>
-  terms: components['schemas']['EngineQuoteResource']['terms']
-}
-
-export type CheckoutCreated = Omit<
-  components['schemas']['CheckoutCreatedResource'],
-  'quote'
-> & {
-  quote: EngineQuote
-}
+export type CheckoutCreated = components['schemas']['CheckoutCreatedResource']
 
 export type CheckoutExtended = components['schemas']['CheckoutExtendedResource']
 
@@ -216,16 +112,7 @@ export type CheckoutSubmitted = {
   checkout_url?: string
 }
 
-/**
- * Mirrors App\Http\Resources\Engine\EngineWaitlistResource.
- * Generated cabin_category / source stay string.
- */
-export type EngineWaitlist = Omit<
-  components['schemas']['EngineWaitlistResource'],
-  'cabin_category'
-> & {
-  cabin_category: components['schemas']['CabinCategory']
-}
+export type EngineWaitlist = components['schemas']['EngineWaitlistResource']
 
 /**
  * Mirrors CompleteReservationResource.declarations items.
@@ -272,7 +159,9 @@ export type CompleteReservation = Omit<
  */
 export type PriceChangedError = {
   message: string
-  quote: EngineQuote
+  quote: {
+    total?: number
+  }
 }
 
 export type EngineEventsAccepted = components['schemas']['EngineEventsAcceptedResource']

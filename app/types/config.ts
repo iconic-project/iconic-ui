@@ -4,35 +4,6 @@
  * objects. Each type mirrors a PHP class and must change with it.
  */
 
-/** Mirrors App\Support\Config\Documents\RateYear. Update when the PHP class changes. */
-export type RateYear = {
-  year: number
-  suite_pp: number
-  owner_pp: number
-  charter_week: number
-}
-
-/** Mirrors App\Support\Config\Documents\RateTerms. Update when the PHP class changes. */
-export type RateTerms = {
-  cabin_deposit_pct: number
-  cabin_balance_days: number
-  charter_deposit_pct: number
-  charter_deposit_business_days: number
-  charter_balance_days: number
-}
-
-/** Mirrors App\Support\Config\Documents\RateRules. Update when the PHP class changes. */
-export type RateRules = {
-  single_supplement_pct: number
-  triple_discount_pct: number
-  child_discount_pct: number
-  child_discounts_per_adult: number
-  child_discounts_per_cabin: number
-  back_to_back_pct: number
-  festive_supplement_pp: number
-  festive_supplement_charter: number
-}
-
 /** Mirrors App\Support\Config\Documents\Rates\Season. Update when the PHP class changes. */
 export type RateSeason = {
   code: string
@@ -99,9 +70,6 @@ export type RatePlan = {
 export type RatesDocument = {
   currency: string
   schema_version: number
-  years: Array<RateYear>
-  terms: RateTerms
-  rules: RateRules
   seasons: Array<RateSeason>
   room_rates: Array<RoomNightlyRate>
   occupancy: RateOccupancy
@@ -113,8 +81,7 @@ export type RatesDocument = {
 
 /** Mirrors App\Support\Config\Documents\GuestsSettings. Update when the PHP class changes. */
 export type GuestsSettings = {
-  max_per_cabin: number
-  max_per_yacht: number
+  max_per_property: number
   child_min_age: number
   child_max_age: number
   adult_required_with_children: boolean
@@ -136,20 +103,8 @@ export type LocaleSettings = {
   currency: string
 }
 
-/** Mirrors App\Support\Config\Documents\PngFees. Update when the PHP class changes. */
-export type PngFees = {
-  foreign_over_12: number
-  foreign_12_and_under: number
-  can_adult: number
-  can_minor: number
-  national_or_resident: number
-  exempt_under_age: number
-}
-
 /** Mirrors App\Support\Config\Documents\FeesSettings. Update when the PHP class changes. */
 export type FeesSettings = {
-  tct_pp: number
-  png: PngFees
   show_in_price_panel: boolean
   footnote: string
 }
@@ -179,7 +134,7 @@ export type EngineSettingsDocument = {
 export type CommissionRules = {
   cap_pct: number
   default_pct: number
-  payable_days_after_cruise: number
+  payable_days_after_check_out: number
 }
 
 /** Mirrors App\Support\Config\Documents\PaymentsRules. Update when the PHP class changes. */
@@ -215,12 +170,6 @@ export type SlaRules = {
   agency_approval_business_days: number
 }
 
-/** Mirrors App\Support\Config\Documents\ManifestsRules. Update when the PHP class changes. */
-export type ManifestsRules = {
-  dpng_fit_days: number
-  dpng_charter_days: number
-}
-
 /** Mirrors App\Support\Config\Documents\AlertsRules. Update when the PHP class changes. */
 export type AlertsRules = {
   low_occupancy_pct: number
@@ -229,8 +178,10 @@ export type AlertsRules = {
 
 /** Mirrors App\Support\Config\Documents\RetentionRules. Update when the PHP class changes. */
 export type RetentionRules = {
-  passport_months_after_cruise: number
-  medical_days_after_cruise: number
+  passport_months_after_check_out: number
+  medical_days_after_check_out: number
+  behavioural_raw_months: number
+  behavioural_unstitched_days: number
 }
 
 /** Mirrors App\Support\Config\Documents\CancellationBand. Update when the PHP class changes. */
@@ -309,7 +260,6 @@ export type BusinessRulesDocument = {
   discounts: DiscountsRules
   holds: HoldsRules
   sla: SlaRules
-  manifests: ManifestsRules
   alerts: AlertsRules
   retention: RetentionRules
   cancellation: {
@@ -504,7 +454,6 @@ export type RuleWhere =
   | 'here'
   | 'rates'
   | 'engine_settings'
-  | 'departures'
   | 'locked'
 
 /**

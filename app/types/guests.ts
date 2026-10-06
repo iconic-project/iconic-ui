@@ -15,18 +15,6 @@ import type {
 export type MaskedNote = components['schemas']['MaskedNoteResource']
 
 /**
- * Mirrors App\Enums\PngCategory. No FormRequest enum schema.
- */
-export type PngCategory =
-  | 'PENDING'
-  | 'EXEMPT'
-  | 'NATIONAL_OR_RESIDENT'
-  | 'CAN_ADULT'
-  | 'CAN_MINOR'
-  | 'FOREIGN_OVER_12'
-  | 'FOREIGN_12_AND_UNDER'
-
-/**
  * Mirrors GuestIssues::issue() severity. The DocumentedResponse
  * still serialises the field as string.
  */
@@ -49,12 +37,7 @@ export type GuestListSummary = Omit<GuestIndexBody, 'data' | 'issues'> & {
   issues: Array<GuestIssue>
 }
 
-export type Guest = Omit<
-  components['schemas']['GuestResource'],
-  'png_category'
-> & {
-  png_category: PngCategory | null
-}
+export type Guest = components['schemas']['GuestResource']
 
 export type ConsentDocument = components['schemas']['ConsentDocument']
 
@@ -102,9 +85,10 @@ export type NationalityRow = NationalitiesSummary['nationalities'][number]
 
 export type PreferenceQuestion = components['schemas']['PreferenceQuestionResource']
 export type PreferenceSource = components['schemas']['PreferenceSource']
-export type PreferenceStatus = components['schemas']['PreferenceStatus']
-export type GuestExperienceDeparture = components['schemas']['GuestExperienceDepartureResource']
-export type DepartureGuestExperience = components['schemas']['DepartureGuestExperienceResource']
+
+/** Scramble does not emit this enum; it matches App\Enums\PreferenceStatus. */
+export type PreferenceStatus = 'ANSWERED' | 'SENT_NO_REPLY' | 'SCHEDULED'
+export type ArrivalGuestList = components['schemas']['ArrivalGuestListResource']
 export type GuestPreferences = components['schemas']['GuestPreferencesResource']
 export type GuestResponse = components['schemas']['GuestResponseResource']
 export type NpsView = components['schemas']['NpsViewResource']
