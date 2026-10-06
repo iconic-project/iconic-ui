@@ -7458,8 +7458,13 @@ export interface components {
             scope_label: string;
             booking_window_label: string;
             travel_window_label: string;
+            stay_from: string | null;
+            stay_to: string | null;
+            min_nights: number | null;
+            applies_to_room_types: string[] | null;
+            applies_to_rate_plans: string[] | null;
+            stay_window_label: string;
             engine_placement: string;
-            live_departures_count: number;
         };
         /**
          * OfferType
@@ -8627,8 +8632,8 @@ export interface components {
             value_text?: string | null;
             channel: components["schemas"]["OfferChannel"];
             partner?: string | null;
-            cabin_types: components["schemas"]["CabinCategory"][];
-            itinerary_codes: string[];
+            cabin_types?: components["schemas"]["CabinCategory"][] | null;
+            itinerary_codes?: string[] | null;
             /** Format: date */
             booking_from?: string | null;
             /** Format: date */
@@ -8637,6 +8642,13 @@ export interface components {
             travel_from?: string | null;
             /** Format: date */
             travel_to?: string | null;
+            /** Format: date */
+            stay_from?: string | null;
+            /** Format: date */
+            stay_to?: string | null;
+            min_nights?: number | null;
+            applies_to_room_types?: string[] | null;
+            applies_to_rate_plans?: string[] | null;
             combinable?: boolean;
             is_promo_code?: boolean;
             badge?: string | null;
@@ -9155,8 +9167,8 @@ export interface components {
             value_text?: string | null;
             channel?: components["schemas"]["OfferChannel"];
             partner?: string | null;
-            cabin_types?: components["schemas"]["CabinCategory"][];
-            itinerary_codes?: string[];
+            cabin_types?: components["schemas"]["CabinCategory"][] | null;
+            itinerary_codes?: string[] | null;
             /** Format: date */
             booking_from?: string | null;
             /** Format: date */
@@ -9165,6 +9177,13 @@ export interface components {
             travel_from?: string | null;
             /** Format: date */
             travel_to?: string | null;
+            /** Format: date */
+            stay_from?: string | null;
+            /** Format: date */
+            stay_to?: string | null;
+            min_nights?: number | null;
+            applies_to_room_types?: string[] | null;
+            applies_to_rate_plans?: string[] | null;
             combinable?: boolean;
             is_promo_code?: boolean;
             badge?: string | null;

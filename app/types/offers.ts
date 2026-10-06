@@ -1,7 +1,7 @@
 /**
- * Offer, charter-enquiry and complete-link aliases over generated
- * RMS schemas. Overlays only where Scramble still cannot express
- * the shape. Each leftover mirrors a PHP class.
+ * Offer and complete-link aliases over generated RMS schemas.
+ * Overlays only where Scramble still cannot express the shape.
+ * Each leftover mirrors a PHP class.
  */
 
 import type { components } from './api'
@@ -23,28 +23,6 @@ export type Offer = Omit<
   channel: OfferChannel
   status: OfferStatus
   stored_status: Exclude<OfferStatus, 'EXPIRED'>
-}
-
-export type CharterEnquiryStatus = components['schemas']['CharterEnquiryStatus']
-export type CharterProposalState = components['schemas']['CharterProposalState']
-
-/**
- * Mirrors CharterEnquiryResource.proposal.valid_until.
- * Scramble types the snapshot string as unknown.
- */
-export type CharterProposal = Omit<
-  NonNullable<components['schemas']['CharterEnquiryResource']['proposal']>,
-  'valid_until'
-> & {
-  valid_until: string | null
-}
-
-export type CharterEnquiry = Omit<
-  components['schemas']['CharterEnquiryResource'],
-  'status' | 'proposal'
-> & {
-  status: CharterEnquiryStatus
-  proposal: CharterProposal | null
 }
 
 export type CompleteLink = components['schemas']['CompleteLinkResource']

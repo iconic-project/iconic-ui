@@ -166,16 +166,6 @@ export type CopySettings = {
   online_deposit_perk: string
 }
 
-/** Mirrors App\Support\Config\Documents\CharterSettings. Update when the PHP class changes. */
-export type CharterSettings = {
-  headline: string
-  intro: string
-  itinerary_label: string
-  response_sla_hours: number
-  group_contexts: Array<string>
-  thank_you: string
-}
-
 /** Mirrors App\Support\Config\Documents\EngineSettingsDocument. Update when the PHP document changes. */
 export type EngineSettingsDocument = {
   guests: GuestsSettings
@@ -183,7 +173,6 @@ export type EngineSettingsDocument = {
   locale: LocaleSettings
   fees: FeesSettings
   copy: CopySettings
-  charter: CharterSettings
 }
 
 /** Mirrors App\Support\Config\Documents\CommissionRules. Update when the PHP class changes. */

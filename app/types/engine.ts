@@ -138,15 +138,6 @@ export type EngineSettings = {
     show_in_price_panel: boolean
     footnote: string
   }
-  charter: {
-    headline: string
-    intro: string
-    itinerary_label: string
-    response_sla_hours: number
-    group_contexts: Array<string>
-    thank_you: string
-    capacity: number
-  }
 }
 
 export type EngineCabin = components['schemas']['DepartureCabinResource']
@@ -234,21 +225,6 @@ export type EngineWaitlist = Omit<
   'cabin_category'
 > & {
   cabin_category: components['schemas']['CabinCategory']
-}
-
-export type CharterProposalView = components['schemas']['CharterProposalViewResource']
-export type AcceptCharterProposalInput = components['schemas']['AcceptCharterProposalRequest']
-export type DeclineCharterProposalInput = components['schemas']['DeclineCharterProposalRequest']
-
-/**
- * Mirrors App\Http\Resources\Engine\EngineCharterEnquiryResource.
- */
-export type EngineCharterEnquiry = Omit<
-  components['schemas']['EngineCharterEnquiryResource'],
-  'status' | 'source'
-> & {
-  status: 'NEW'
-  source: 'ENGINE'
 }
 
 /**
