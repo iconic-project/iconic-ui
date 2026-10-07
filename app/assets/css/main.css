@@ -310,6 +310,22 @@ table.list:not(.panel table):not(.portal-scroll table):not(.ank-panel table):not
   overflow: hidden;
 }
 
+table.list:not(.panel table):not(.portal-scroll table):not(.ank-panel table):not(.matrix-scroll table):not(.rates-scroll table) > thead > tr:first-child > th:first-child {
+  border-top-left-radius: var(--ui-radius);
+}
+
+table.list:not(.panel table):not(.portal-scroll table):not(.ank-panel table):not(.matrix-scroll table):not(.rates-scroll table) > thead > tr:first-child > th:last-child {
+  border-top-right-radius: var(--ui-radius);
+}
+
+table.list:not(.panel table):not(.portal-scroll table):not(.ank-panel table):not(.matrix-scroll table):not(.rates-scroll table) > tbody > tr:last-child > td:first-child {
+  border-bottom-left-radius: var(--ui-radius);
+}
+
+table.list:not(.panel table):not(.portal-scroll table):not(.ank-panel table):not(.matrix-scroll table):not(.rates-scroll table) > tbody > tr:last-child > td:last-child {
+  border-bottom-right-radius: var(--ui-radius);
+}
+
 /*
   Staff theme for the panel and the portal.
   The booking engine leaves this attribute off and keeps the HILO tokens above.
