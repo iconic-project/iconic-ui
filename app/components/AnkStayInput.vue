@@ -17,13 +17,16 @@ export type NightMark = {
 
 const model = defineModel<StayRange | null>({ default: null })
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   minNights: number
   maxNights: number
   minDate?: string | null
   maxDate?: string | null
+  months?: number
   nightInfo?: (date: string) => NightMark
-}>()
+}>(), {
+  months: 2,
+})
 
 const { t } = useI18n()
 const { format: formatMoney } = useMoney()
@@ -285,7 +288,7 @@ watch(() => model.value, (value) => {
     </p>
     <UCalendar
       range
-      :number-of-months="2"
+      :number-of-months="months"
       :model-value="calendarModel"
       :min-value="minValue"
       :max-value="maxValue"
